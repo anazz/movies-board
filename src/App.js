@@ -16,7 +16,15 @@ function App() {
         <Navbar />   
           <div className='container'>
             <Switch>
-              <Route exact path='/' component={Home} />
+            <Route 
+                  exact 
+                  path='/'
+                  render={(props)=>
+                    <Fragment>
+                      <Home prods={Home}/>
+                    </Fragment>
+                  }
+                /> 
               <Route
                 exact
                 path='/movies'
