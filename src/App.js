@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
@@ -10,6 +11,20 @@ import AddMovie from './components/AddMovie/AddMovie';
 import ChangeMovieInfo from './components/ChangeMovieInfo/ChangeMovieInfo';
 
 function App() {
+  const LOCAL_URL = "http://localhost:3002/movies";
+
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    axios.get(LOCAL_URL, {
+      }).then((r) => {
+        let d = r.data;
+        setMovies(d);
+      }).catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <Router>
       <div className='App'>
@@ -30,7 +45,9 @@ function App() {
                 path='/movies'
                 render={(props)=>
                   <Fragment>
-                    <MoviesLibrary prods={MoviesLibrary}/>
+                    <MoviesLibrary prods={MoviesLibrary}
+                      movies={movies}
+                    />
                   </Fragment>
                 }
               />
