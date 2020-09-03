@@ -43,7 +43,7 @@ function App() {
               <Route
                 exact
                 path='/movies'
-                render={(props)=>
+                render={()=>
                   <Fragment>
                     <MoviesLibrary prods={MoviesLibrary}
                       movies={movies}
@@ -54,7 +54,7 @@ function App() {
               <Route
                 exact
                 path='/movie'
-                render={(props)=>
+                render={()=>
                   <Fragment>
                     <SelectedMovie prods={SelectedMovie}/> 
                   </Fragment>
