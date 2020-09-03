@@ -1,10 +1,15 @@
 import React from 'react';
+import MoviesList from './MoviesList';
 import './MoviesLibrary.css';
 
 const MoviesLibrary = (props) => {
 
     const moviesList = props.movies.map((movie) => (
-        console.log(movie)
+        console.log(movie),
+        <MoviesList
+			movie={movie}
+            key={movie.id}
+		/>
 	));
    
     return (
