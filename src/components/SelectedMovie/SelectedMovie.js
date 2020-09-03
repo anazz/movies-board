@@ -1,10 +1,15 @@
 import React from 'react';
+import Movie from './Movie';
 import './SelectedMovie.css';
 
 const SelectedMovie = (props) => {
 
     const movieSelected = props.movies.map((movie) => (
-        console.log(movie)
+        console.log(movie),
+        <Movie
+			movie={movie}
+            key={movie.id}
+		/>
     ));
     
     return (
