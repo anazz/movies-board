@@ -56,7 +56,9 @@ function App() {
                 path='/movie'
                 render={()=>
                   <Fragment>
-                    <SelectedMovie prods={SelectedMovie}/> 
+                    <SelectedMovie prods={SelectedMovie}
+                      movies={movies}
+                    /> 
                   </Fragment>
                 }
               />
