@@ -5,17 +5,36 @@ import './AddMovie.css';
 
 const AddMovie = (props) => {
 
+    /* Search in form by movie title and movie release date */
+
+    const [formData, setFormData] = useState({
+		title: '',
+		releaseDate: '',
+    });
+
+    /* Setting the formData */
+    
+    const onUpdateData = (event) => {
+        // event.preventDefault();
+        const name = event.target.name;
+        const value = event.target.value;
+        const data = { ...formData };
+            data[name] = value;
+            setFormData(data);
+            console.log(data);
+    }
+
     const addMoviesFormik = useFormik({
-        // initialValues: {
-        //   title: "",
-        //   release_date: "",
-        //   description: "",
-        //   genres: "",
-        //   actor_name: "",
-        //   actor_character: "",
-        //   similar_movie_title: "",
-        //   similar_movie_release_date: ""
-        // },
+        initialValues: {
+          title: "",
+          release_date: "",
+          description: "",
+          genres: "",
+          actor_name: "",
+          actor_character: "",
+          similar_movie_title: "",
+          similar_movie_release_date: ""
+        },
 
         onSubmit: values => {
           console.log(values);
@@ -65,18 +84,24 @@ const AddMovie = (props) => {
             {/* SEARCH FILTERS */}
 
             <div className="search-wrapper">
-                <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    placeholder="Search Title"
-                />
-                <input
-                    type="text"
-                    id="release-date-search"
-                    name="release_date"
-                    placeholder="Search Release Date"
-                />
+            <   form>
+                    <input
+                        type="text"
+                        id="title-search"
+                        name="title"
+                        value={formData.title}
+                        // placeholder="Search Title"
+                        onChange={onUpdateData}
+                    />
+                    <input
+                        type="date"
+                        id="release-date-search"
+                        name="releaseDate"
+                        value={formData.releaseDate}
+                        // placeholder="Search Release Date"
+                        onChange={onUpdateData}
+                    />
+                </form>
             </div>
 
             {/* FILTERED MOVIES */}

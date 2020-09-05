@@ -11,7 +11,7 @@ import AddMovie from './components/AddMovie/AddMovie';
 import ChangeMovieInfo from './components/ChangeMovieInfo/ChangeMovieInfo';
 
 function App() {
-  const LOCAL_URL = "http://localhost:3002/movies";
+  const LOCAL_URL = "http://localhost:3000/movies";
 
   const [movies, setMovies] = useState([]);
 
