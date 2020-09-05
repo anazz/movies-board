@@ -1,12 +1,71 @@
-h2 {
-    margin: 0;
-    padding: 5rem;
-    color: black;
-    text-align: center;
+.search-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 2rem;
 }
 
-.wrapper {
-    width: 100%;
-    height: 100vh;
-    background-color: white;
+#title-search {
+    margin-right: 1rem;
 }
+
+.results-wrapper {
+    margin: 2rem;
+    text-align: center;
+    border: 1px solid rgb(202, 209, 138);
+}
+
+.results-list {
+    margin: 1rem;
+    border: 1px solid lightblue;
+    list-style: none;
+}
+
+.form-wrapper {
+    margin: 2rem;
+    border: 1px solid rgb(202, 209, 138);
+}
+.form-top-wrapper {
+    display: flex;
+    margin-top: 2rem;
+}
+
+.form-description-wrapper {
+    display: flex;
+    margin-top: 2rem;
+}
+
+.form-bottom-wrapper {
+    display: flex;
+    margin: 2rem 1rem;
+}
+
+label { 
+    padding: 0 1rem;
+}
+
+.categories {
+    padding-bottom: 1rem;
+}
+
+span {
+    padding-bottom: 1rem;
+}
+
+.form-genres {
+    display: flex;
+    flex-direction: column;
+    padding-right: 2rem;
+}
+
+.form-actors {
+    display: flex;
+    flex-direction: column;
+    padding-right: 2rem;
+}
+
+.form-similar-movies {
+    display: flex;
+    flex-direction: column;
+    padding-right: 2rem;
+}
+
