@@ -6,6 +6,7 @@
 
 #title-search {
     margin-right: 1rem;
+    color: black;
 }
 
 .results-wrapper {
@@ -16,8 +17,12 @@
 
 .results-list {
     margin: 1rem;
-    border: 1px solid lightblue;
-    list-style: none;
+    /* border: 1px solid lightblue; */
+    /* list-style: none; */
+}
+
+.release_date {
+    color: darkorchid;
 }
 
 .form-wrapper {

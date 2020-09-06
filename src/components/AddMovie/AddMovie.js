@@ -17,7 +17,7 @@ const AddMovie = (props) => {
     /* Setting the formData */
     
     const onUpdateData = (event) => {
-        // event.preventDefault();
+        event.preventDefault();
         const name = event.target.name;
         const value = event.target.value;
         const data = { ...formData };
