@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useFormik } from "formik";
-// import MoviesResults from './MoviesResults';
-// import AddMovieForm from './AddMovieForm';
+import MoviesResults from './MoviesResults';
+import AddMovieForm from './AddMovieForm';
 import './AddMovie.css';
 
 const AddMovie = (props) => {
@@ -52,38 +52,54 @@ const AddMovie = (props) => {
 
             {/* SEARCH FILTERS */}
 
-            <div className="search-wrapper">
-            <   form>
-                    <input
-                        type="text"
-                        id="title-search"
-                        name="title"
-                        value={formData.title}
-                        // placeholder="Search Title"
-                        onChange={onUpdateData}
-                    />
-                    <input
-                        type="date"
-                        id="release-date-search"
-                        name="releaseDate"
-                        value={formData.releaseDate}
-                        // placeholder="Search Release Date"
-                        onChange={onUpdateData}
-                    />
-                </form>
-            </div>
+            <section className="search-wrapper">
+                    <form>
+                        <input
+                            type="text"
+                            id="title-search"
+                            name="title"
+                            value={formData.title}
+                            // placeholder="Search Title"
+                            onChange={onUpdateData}
+                        />
+                        <input
+                            type="date"
+                            id="release-date-search"
+                            name="releaseDate"
+                            value={formData.releaseDate}
+                            // placeholder="Search Release Date"
+                            onChange={onUpdateData}
+                        />
+                    </form>
+                </section>
 
-            {/* FILTERED MOVIES */}
+                {/* Movies List */}
 
-            <div className="results-wrapper">
-                <h2>Movie Results</h2>
-                <ul className="movie-results">
-                    <li className="results-list">
-                        <h3>Title: </h3>
-                        <span className="release_date">Release Date:</span>
-                    </li>
-                </ul>
-            </div>
+                <section className="">
+                    <div className="">
+                        {movies.map(movie => (
+                            <MoviesResults 
+                                key={movie.id}
+                                movie={movie}
+                            />
+                        ))
+                        }
+                    </div>
+                </section>
+
+                {/* Add Movies Form */}
+
+                <section>    
+                    <div className="">
+                        {movies.map(movie => (
+                            <AddMovieForm 
+                                key={movie.id}
+                                movie={movie}
+                            />  
+                        ))
+                        }
+                    </div>
+                </section>
         </div>
     );
 };
