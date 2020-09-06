@@ -57,60 +57,58 @@ const AddMovieForm = (props) => {
 
     const addMoviesFormik = useFormik({
         initialValues: {
-            title: props.movie.title,
-            releaseDate: props.movie.release_date,
-            description: props.movie.overview,
-            genres: props.movie.genres,
-            actor_name: "",
-            actor_character: "",
-            similar_movie_title: "",
-            similar_movie_release_date: ""
+          title: props.movie.title,
+          releaseDate: props.movie.release_date,
+          description: props.movie.overview,
+          genres: genres.map(genre => genre.name),
+          actorName: credits.map(actor => actor.name),
+          actorCharacter: credits.map(actor => actor.character),
+          similarMovieTitle: similarMovies.map(similar => similar.title),
+          similarMovieReleaseDate: similarMovies.map(similar => similar.release_date)
         },
 
         onSubmit: values => {
-            console.log(values);
+          console.log(values);
         },
 
         validate: values => {
-            const errors = {};
-            if (!values.title) {
-                errors.name = "Required";
-            }
+          const errors = {};
+          if (!values.title) {
+            errors.title = "Required";
+          }
+    
+          if (!values.releaseDate) {
+            errors.releaseDate = "Required";
+          }
+    
+          if (!values.description) {
+            errors.description = "Required";
+          } 
 
-            if (!values.release_date) {
-                errors.pass = "Required";
-            }
+          if (!values.genres) {
+            errors.genres = "Required";
+          }
+    
+          if (!values.actorName) {
+            errors.actorName = "Required";
+          }
+    
+          if (!values.actorCharacter) {
+            errors.actorCharacter = "Required";
+          }
 
-            if (!values.description) {
-                errors.description = "Required";
-            } 
-
-            if (!values.genres) {
-                errors.name = "Required";
-            }
-
-            if (!values.actor_name) {
-                errors.pass = "Required";
-            }
-
-            if (!values.actor_character) {
-                errors.description = "Required";
-            }
-
-            if (!values.similar_movie_title) {
-                errors.name = "Required";
-            }
-
-            if (!values.similar_movie_release_date) {
-                errors.pass = "Required";
-            }
-            return errors;
+          if (!values.similarMovieTitle) {
+            errors.similarMovieTitle = "Required";
+          }
+    
+          if (!values.similarMovieReleaseDate) {
+            errors.similarMovieReleaseDate = "Required";
+          }
+          return errors;
         }
     });
 
-    /* THE FORM */
-
-    return (
+	return (
         <div className="form-wrapper">
             <form onSubmit={addMoviesFormik.handleSubmit}>
                 <div className="form-top-wrapper">
@@ -158,9 +156,6 @@ const AddMovieForm = (props) => {
                 <div className="form-bottom-wrapper"> 
                     <div className="form-genres">
                         <span>Categories</span>
-
-                        {/* MOVIE GENRES LIST INPUTS */}
-
                         <ul>
                             {genres.map(genre => (
                             <li>
@@ -177,42 +172,39 @@ const AddMovieForm = (props) => {
                                 ) : null}
                                 {/* error message */} 
                             </li>
-                            ))}
+                            ))} 
                         </ul>  
                     </div>
 
                     <div className="form-actors">
                         <h4>Actors</h4>
-
-                        {/* MOVIE CAST LIST INPUTS */}
-
                         <ul>
                             {credits.map(actor => (
                             <li>
-                                <label htmlFor="actor_name">Name</label>
+                                <label htmlFor="actorName">Name</label>
                                 <input
                                 type="text"
                                 id="actor_name"
-                                name="actor_name"
+                                name="actorName"
                                 onChange={addMoviesFormik.handleChange}
                                 value={actor.name}
                                 />
                                 {/* error message */}
-                                {addMoviesFormik.errors.actor_name ? (
-                                    <div>{addMoviesFormik.errors.actor_name}</div>
+                                {addMoviesFormik.errors.actorName ? (
+                                    <div>{addMoviesFormik.errors.actorName}</div>
                                 ) : null}
                                 {/* error message */}
-                                <label htmlFor="actor_character">Characters</label>
+                                <label htmlFor="actorCharacter">Characters</label>
                                 <input
                                 type="text"
-                                id="actor_character"
-                                name="actor_character"
+                                id="actor.character"
+                                name="actorCharacter"
                                 onChange={addMoviesFormik.handleChange}
                                 value={actor.character}
                                 />
                                 {/* error message */}
-                                {addMoviesFormik.errors.actor_character ? (
-                                    <div>{addMoviesFormik.errors.actor_character}</div>
+                                {addMoviesFormik.errors.actorCharacter ? (
+                                    <div>{addMoviesFormik.errors.actorCharacter}</div>
                                 ) : null}
                                 {/* error message */}
                             </li>
@@ -221,40 +213,37 @@ const AddMovieForm = (props) => {
                     </div>
                     <div className="form-similar-movies">
                         <h4>Similar Movies</h4>
-
-                        {/* SIMILAR MOVIES LIST INPUTS */}
-
                         <ul>
                             {similarMovies.map(similar => (
                             <li>
-                                <label htmlFor="similar_movie_title">Title</label>
+                                <label htmlFor="similarMovieTitle">Title</label>
                                 <input
                                 type="text"
                                 id="similar_movie_title"
-                                name="similar_movie_title"
+                                name="similarMovieTitle"
                                 onChange={addMoviesFormik.handleChange}
                                 value={similar.title}
                                 />
                                 {/* error message */}
-                                {addMoviesFormik.errors.similar_movie_title ? (
-                                    <div>{addMoviesFormik.errors.similar_movie_title}</div>
+                                {addMoviesFormik.errors.similarMovieTitle ? (
+                                    <div>{addMoviesFormik.errors.similarMovieTitle}</div>
                                 ) : null}
                                 {/* error message */}
-                                <label htmlFor="similar_movie_release_date">Release Date</label>
+                                <label htmlFor="similarMovieReleaseDate">Release Date</label>
                                 <input
                                 type="text"
                                 id="similar_movie_release_date"
-                                name="similar_movie_release_date"
+                                name="similarMovieReleaseDate"
                                 onChange={addMoviesFormik.handleChange}
                                 value={similar.release_date}
                                 />
                                 {/* error message */}
-                                {addMoviesFormik.errors.similar_movie_release_date ? (
-                                    <div>{addMoviesFormik.errors.similar_movie_release_date}</div>
+                                {addMoviesFormik.errors.similarMovieReleaseDate ? (
+                                    <div>{addMoviesFormik.errors.similarMovieReleaseDate}</div>
                                 ) : null}
-                                {/* error message */}
+                            {/* error message */}
                             </li>
-                            ))}
+                            ))} 
                         </ul>
                     </div>
                 </div>
