@@ -3,8 +3,8 @@ import React from 'react';
 const MoviesResults = (props) => {
 	return (
 		<li className="results-list">
-            <h3>??</h3>
-            <span className="release_date">???</span>
+            <h3>{props.movie.title}</h3>
+            <span className="release_date">{props.movie.release_date}</span>
 		</li>
 	);
 };

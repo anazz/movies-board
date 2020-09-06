@@ -7,54 +7,54 @@ const AddMovieForm = (props) => {
 
     const addMoviesFormik = useFormik({
         initialValues: {
-        title: "",
-        releaseDate: "",
-        description: "",
-        genres: "",
-        actor_name: "",
-        actor_character: "",
-        similar_movie_title: "",
-        similar_movie_release_date: ""
+            title: props.movie.title,
+            releaseDate: props.movie.release_date,
+            description: props.movie.overview,
+            genres: props.movie.genres,
+            actor_name: "",
+            actor_character: "",
+            similar_movie_title: "",
+            similar_movie_release_date: ""
         },
 
         onSubmit: values => {
-        console.log(values);
+            console.log(values);
         },
 
         validate: values => {
-        const errors = {};
-        if (!values.title) {
-            errors.name = "Required";
-        }
+            const errors = {};
+            if (!values.title) {
+                errors.name = "Required";
+            }
 
-        if (!values.release_date) {
-            errors.pass = "Required";
-        }
+            if (!values.release_date) {
+                errors.pass = "Required";
+            }
 
-        if (!values.description) {
-            errors.description = "Required";
-        } 
+            if (!values.description) {
+                errors.description = "Required";
+            } 
 
-        if (!values.genres) {
-            errors.name = "Required";
-        }
+            if (!values.genres) {
+                errors.name = "Required";
+            }
 
-        if (!values.actor_name) {
-            errors.pass = "Required";
-        }
+            if (!values.actor_name) {
+                errors.pass = "Required";
+            }
 
-        if (!values.actor_character) {
-            errors.description = "Required";
-        }
+            if (!values.actor_character) {
+                errors.description = "Required";
+            }
 
-        if (!values.similar_movie_title) {
-            errors.name = "Required";
-        }
+            if (!values.similar_movie_title) {
+                errors.name = "Required";
+            }
 
-        if (!values.similar_movie_release_date) {
-            errors.pass = "Required";
-        }
-        return errors;
+            if (!values.similar_movie_release_date) {
+                errors.pass = "Required";
+            }
+            return errors;
         }
     });
 
