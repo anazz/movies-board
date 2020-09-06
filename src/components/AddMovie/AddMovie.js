@@ -26,6 +26,25 @@ const AddMovie = (props) => {
             console.log(data);
     }
 
+    /* Setting the State and the values for the api request and response */
+
+    const [movies, setMovies] = useState([]);
+    const API_KEY = process.env.REACT_APP_API_KEY;
+    const base_url = `https://api.themoviedb.org/3`;
+
+    /* api request, response and data retrieve in movies */
+
+    useEffect(() => {  
+        if(formData.title.length > 1) {
+            axios.get(`${base_url}/search/movie?api_key=${API_KEY}&query=${formData.title}`)
+            .then((r)=> {
+                setMovies(r.data.results)
+            }).catch((error) => {
+                console.log(error);
+            });  
+        }
+    }, [formData.title]);
+
     return (
         <div className="wrapper">
 
