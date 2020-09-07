@@ -5,11 +5,15 @@
 }
 
 h1 {
-    margin: 0;
-    padding: 5rem;
+    margin: 6rem 8rem;
+    color: #FE654F;
+    font-size: 10rem;
     text-align: center;
 }
 
-p {
+.app-description {
+    color: darkorchid;
+    font-size: 20px;
     text-align: center;
+    
 }

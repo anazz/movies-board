@@ -55,7 +55,7 @@ h3 {
 } */
 
 .description {
-    margin: 3rem 1rem 1rem 2rem;
+    margin: 2rem 1rem 1rem 3rem;
     text-align: left;
 }
 
@@ -64,11 +64,12 @@ h3 {
 }
 
 .similar-movies-wrapper {
-    padding-top: 10rem;
+    margin-top: 9rem;
 }
 
 ul {
     display: flex;
+    padding-inline-start: 50px;
     list-style: none;
 }
 

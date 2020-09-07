@@ -22,7 +22,9 @@ a {
   text-decoration: none;
 }
 .navbar, a:hover {
-  color: blanchedalmond;
+  /* color: blanchedalmond; */
+  color: darkorchid;
+  text-decoration: none;
 }
 
 /* Components */
