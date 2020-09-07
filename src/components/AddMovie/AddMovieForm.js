@@ -60,11 +60,11 @@ const AddMovieForm = (props) => {
           title: props.movie.title,
           releaseDate: props.movie.release_date,
           description: props.movie.overview,
-          genres: genres.map(genre => genre.name),
-          actorName: credits.map(actor => actor.name),
-          actorCharacter: credits.map(actor => actor.character),
-          similarMovieTitle: similarMovies.map(similar => similar.title),
-          similarMovieReleaseDate: similarMovies.map(similar => similar.release_date)
+          genres: [],
+          actorName: [],
+          actorCharacter: [],
+          similarMovieTitle: [],
+          similarMovieReleaseDate: []
         },
 
         onSubmit: values => {
@@ -118,6 +118,7 @@ const AddMovieForm = (props) => {
                     id="title"
                     name="title"
                     onChange={addMoviesFormik.handleChange}
+                    placeholder=""
                     value={addMoviesFormik.values.title}
                     />
                     {/* error message */}
@@ -131,6 +132,7 @@ const AddMovieForm = (props) => {
                     id="release-date"
                     name="releaseDate"
                     onChange={addMoviesFormik.handleChange}
+                    placeholder=""
                     value={addMoviesFormik.values.releaseDate}
                     />
                     {/* error message */}
@@ -145,6 +147,7 @@ const AddMovieForm = (props) => {
                     id="description"
                     name="description"
                     onChange={addMoviesFormik.handleChange}
+                    placeholder=""
                     value={addMoviesFormik.values.description}
                     />
                     {/* error message */}
@@ -155,7 +158,7 @@ const AddMovieForm = (props) => {
                 </div>
                 <div className="form-bottom-wrapper"> 
                     <div className="form-genres">
-                        <span>Categories</span>
+                        <h4>Categories</h4>
                         <ul>
                             {genres.map(genre => (
                             <li>
@@ -164,7 +167,8 @@ const AddMovieForm = (props) => {
                                 id="genres"
                                 name="genres"
                                 onChange={addMoviesFormik.handleChange}
-                                value={genre.name}
+                                placeholder={genre.name}
+                                value={addMoviesFormik.genres}
                                 />
                                 {/* error message */}
                                 {addMoviesFormik.errors.genres ? (
@@ -187,7 +191,8 @@ const AddMovieForm = (props) => {
                                 id="actor_name"
                                 name="actorName"
                                 onChange={addMoviesFormik.handleChange}
-                                value={actor.name}
+                                placeholder={actor.name}
+                                value={addMoviesFormik.actorName}
                                 />
                                 {/* error message */}
                                 {addMoviesFormik.errors.actorName ? (
@@ -200,7 +205,8 @@ const AddMovieForm = (props) => {
                                 id="actor.character"
                                 name="actorCharacter"
                                 onChange={addMoviesFormik.handleChange}
-                                value={actor.character}
+                                placeholder={actor.character}
+                                value={addMoviesFormik.actorCharacter}
                                 />
                                 {/* error message */}
                                 {addMoviesFormik.errors.actorCharacter ? (
@@ -222,7 +228,8 @@ const AddMovieForm = (props) => {
                                 id="similar_movie_title"
                                 name="similarMovieTitle"
                                 onChange={addMoviesFormik.handleChange}
-                                value={similar.title}
+                                placeholder={similar.title}
+                                value={addMoviesFormik.similarMovieTitle}
                                 />
                                 {/* error message */}
                                 {addMoviesFormik.errors.similarMovieTitle ? (
@@ -235,7 +242,8 @@ const AddMovieForm = (props) => {
                                 id="similar_movie_release_date"
                                 name="similarMovieReleaseDate"
                                 onChange={addMoviesFormik.handleChange}
-                                value={similar.release_date}
+                                placeholder={similar.release_date}
+                                value={addMoviesFormik.similarMovieReleaseDate}
                                 />
                                 {/* error message */}
                                 {addMoviesFormik.errors.similarMovieReleaseDate ? (
