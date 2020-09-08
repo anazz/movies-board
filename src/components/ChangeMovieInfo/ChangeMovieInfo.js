@@ -62,9 +62,9 @@ const ChangeMovieInfo = (props) => {
     return (
         <div>
         <h1>Modifier les informations d'un film</h1>
-        <div className="form-wrapper">
+        <div className="update-form-wrapper">
             <form onSubmit={changeMovieInfoFormik.handleSubmit}>
-                <div className="form-top-wrapper">
+                <div className="update-form-top-wrapper">
                     {/* <label htmlFor="title">Title</label> */}
                     <div className="title-input-wrapper">
                     <h4>Title</h4>
@@ -106,7 +106,7 @@ const ChangeMovieInfo = (props) => {
                     </div>
                     </div>
                 </div>
-                <div className="form-description-wrapper">
+                <div className="update-form-description-wrapper">
                     {/* <label htmlFor="description">Synopsis</label> */}
                     <div className="description-input-wrapper">
                     <h4>Synopsis</h4>
@@ -127,8 +127,8 @@ const ChangeMovieInfo = (props) => {
                     {/* error message */}
                     </div>
                 </div>
-                <div className="form-bottom-wrapper"> 
-                    <div className="form-genres">
+                <div className="update-form-bottom-wrapper"> 
+                    <div className="update-form-genres">
                         <h4>Categories</h4>
                         <ul className="categories-list">
                             {/* {genres.map(genre => ( */}
@@ -153,7 +153,7 @@ const ChangeMovieInfo = (props) => {
                         </ul>  
                     </div>
 
-                    <div className="form-actors">
+                    <div className="update-form-actors">
                         <h4>Actors</h4>
                         <ul className="actors-list">
                             {/* {credits.map(actor => ( */}
@@ -192,7 +192,7 @@ const ChangeMovieInfo = (props) => {
                             {/* ))} */}
                         </ul>
                     </div>
-                    <div className="form-similar-movies">
+                    <div className="update-form-similar-movies">
                         <h4>Similar Movies</h4>
                         <ul className="similar-movies-list">
                             {/* {similarMovies.map(similar => ( */}

@@ -11,10 +11,9 @@ const Movie = (props) => {
                 <div className="col">
                     {/* <img src={props.movie.backdrop} alt="movie poster" className="bg-poster" /> */}
                     <div className="movie-top-info">
-                    <span className="release_date">Sortie en salles: {props.movie.release_date}</span>
-                        <h3>{props.movie.title}</h3>
-                        {/* <img src={props.movie.poster} alt="movie poster" /> */}
-                        {/* <p className="description">{props.movie.description}</p> */}
+                    <span className="movie-release-date">Sortie en salles: {props.movie.release_date}</span>
+                        <h3 class="movie-title">{props.movie.title}</h3>
+                        <p className="categories">{props.movie.categories.join()}</p>
                     </div>
                 </div>
                 <div className="col">
@@ -23,7 +22,18 @@ const Movie = (props) => {
             </div>
             <div className="row">
                 <div className="col-6 description-wrapper">
+                <h4><span class="slash">/</span>Synopsis</h4>
                 <p className="description">{props.movie.description}</p>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-6 credits-wrapper">
+                <h4 className="cast-title"><span class="slash">/</span>Distribution</h4>
+                <ul>
+                {props.movie.actors.map(actor => (
+                <li className="actor-name">{actor.name}</li>
+                ))}
+                </ul>
                 </div>
             </div>
             <div className="row similar-movies-wrapper">

@@ -10,3 +10,57 @@ h2 {
     height: 100vh;
     background-color: white;
 }
+
+h4 {
+    color: #A89787;
+    font-weight: 200;
+    font-style: normal;
+    letter-spacing: 1px;
+}
+
+#title, #release-date, #description {
+    /* color: #0D3B66; */
+    color: #A89787;
+}
+
+.update-form-wrapper {
+    width: 120%;
+    height: auto;
+    padding: 2rem 1rem;
+    background-color: #01161C;
+}
+
+.update-form-top-wrapper {
+    display: flex;
+    margin-top: 2rem;
+    padding-left: 1rem;
+}
+
+.update-form-description-wrapper {
+    display: flex;
+    margin-top: 2rem;
+    padding-left: 1rem;
+}
+
+.update-form-genres {
+    display: flex;
+    flex-direction: column;
+    padding-right: 2rem;
+}
+
+.update-form-actors {
+    display: flex;
+    flex-direction: column;
+    padding-right: 2rem;
+}
+
+.update-form-similar-movies {
+    display: flex;
+    flex-direction: column;
+    padding-right: 2rem;
+}
+
+.update-form-bottom-wrapper {
+    display: flex;
+    margin: 2rem 1rem;
+}

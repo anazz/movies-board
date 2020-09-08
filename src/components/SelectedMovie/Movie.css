@@ -10,14 +10,18 @@ h3 {
     color: #FE654F;
 }
 
+.movie-release-date {
+    color: #FEF4DD;
+}
+
 .bg {
     position: absolute;
     z-index: -1;
     background-repeat: no-repeat;
     background-size: 50rem 80rem;
     /* opacity: 0.3; */
-    width: 100vw;
-    height: 66.5vw;
+    width: 110vw;
+    height: 76.5vw;
 }
 
 .bg-poster {
@@ -26,19 +30,20 @@ h3 {
     background-repeat: no-repeat;
     background-size: 50rem 80rem;
     /* opacity: 0.3; */
-    width: 100vw;
-    height: 66.5vw;
+    width: 110vw;
+    height: 76.5vw;
 }
 
 .bg-layer {
     /* background-color: rgba(248, 247, 216, 0.7); */
     /* background-color: rgba(250, 240, 202, 0.8); */
-    background-color: rgba(255,250,250, 0.9);
+    /* background-color: rgba(255,250,250, 0.9); */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    background-color: rgba(1, 23, 30, 0.81)
 }
 
 .main-poster {
@@ -47,21 +52,56 @@ h3 {
     right: 0;
     width: 25vw;
     padding: 3.5rem 3rem;
-    background-color: rgba(250, 240, 202, 0.8);
-    border: 2px solid #0D3B66;
+    background-color: #01161C;
+    border: 0.3px solid #A89787;
 }
 
-/* .description-wrapper {
-    margin: 3rem;
-} */
+.categories {
+    margin: 0;
+    padding: 0;
+    color: #A89787;
+    font-weight: 200;
+    font-style: normal;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+.description-wrapper {
+    margin-left: 3rem;
+}
 
 .description {
-    margin: 2rem 1rem 1rem 3rem;
+    margin: 2rem 1rem 1rem 0;
+    color: #A89787;
+    font-weight: 200;
+    font-style: normal;
+    letter-spacing: 1px;
     text-align: left;
 }
 
 .movie-info {
     margin: 2rem;
+}
+
+.movie-title {
+    /* color: #A89787; */
+    /* color: #FEF4DD; */
+    font-weight: 200;
+    font-size: 40px;
+    font-style: normal;
+    letter-spacing: 1px;
+}
+
+.cast-title {
+    margin-left: 3rem;
+}
+
+.actor-name {
+    color: #A89787;
+    font-weight: 200;
+    font-style: normal;
+    letter-spacing: 1px;
+    text-align: left;
 }
 
 .similar-movies-wrapper {
@@ -84,5 +124,9 @@ li {
 
 .movie-page-title {
     margin: 0 8rem;
+}
+
+.slash {
+    padding-right: 0.5rem;
 }
 

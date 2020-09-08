@@ -52,7 +52,7 @@ const AddMovie = (props) => {
 
             {/* SEARCH FILTERS */}
 
-            <section className="search-wrapper">
+                <div className="search-wrapper">
                     <form>
                         <div className="search-form-wrapper">
                         <input
@@ -75,11 +75,12 @@ const AddMovie = (props) => {
                         />
                         </div>
                     </form>
-                </section>
+                </div>
 
+            <div className="list-form-wrapper">
                 {/* Movies List */}
 
-                <section className="">
+                <div className="">
                     <div className="">
                     <ul className="list-group movies-result-list">
                         {movies.map(movie => (
@@ -91,11 +92,11 @@ const AddMovie = (props) => {
                         }
                     </ul>  
                     </div>
-                </section>
+                </div>
 
                 {/* Add Movies Form */}
 
-                <section>    
+                <div>    
                     <div className="">
                         {movies.map(movie => (
                             <AddMovieForm 
@@ -105,7 +106,8 @@ const AddMovie = (props) => {
                         ))
                         }  
                     </div>
-                </section>
+                </div>
+            </div>
         </div>
     );
 };
