@@ -2,10 +2,12 @@ import React from 'react';
 
 const MoviesResults = (props) => {
 	return (
-		<li className="results-list">
-            <h3>{props.movie.title}</h3>
-            <span className="release_date">{props.movie.release_date}</span>
-		</li>
+			<li className="">
+				<a href="" className="list-group-item list-group-item-action list-group-item-warning">
+					<h3>{props.movie.title}</h3>
+					<span className="release_date">{props.movie.release_date}</span>
+				</a>
+			</li>
 	);
 };
 

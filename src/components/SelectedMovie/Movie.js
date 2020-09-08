@@ -11,7 +11,7 @@ const Movie = (props) => {
                 <div className="col">
                     {/* <img src={props.movie.backdrop} alt="movie poster" className="bg-poster" /> */}
                     <div className="movie-top-info">
-                    <   span className="release_date">Sortie en salles: {props.movie.release_date}</span>
+                    <span className="release_date">Sortie en salles: {props.movie.release_date}</span>
                         <h3>{props.movie.title}</h3>
                         {/* <img src={props.movie.poster} alt="movie poster" /> */}
                         {/* <p className="description">{props.movie.description}</p> */}

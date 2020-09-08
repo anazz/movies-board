@@ -14,8 +14,10 @@ const MoviesLibrary = (props) => {
    
     return (
         <div className="wrapper">
-            <h2>Movies Library</h2>
-            <ul className="movie-list">{moviesList}</ul>
+            <div className="movies-library-top">
+                <h1>Bibliothèque de films</h1>
+            </div>
+            <div className="movies-library-list"><ul className="movie-list">{moviesList}</ul></div>
         </div>
     );
 };

@@ -48,13 +48,15 @@ const AddMovie = (props) => {
     return (
         <div className="wrapper">
 
-            <h2>Add Movie</h2>
+            <h1>Ajouter un film</h1>
 
             {/* SEARCH FILTERS */}
 
             <section className="search-wrapper">
                     <form>
+                        <div className="search-form-wrapper">
                         <input
+                            className="form-control"
                             type="text"
                             id="title-search"
                             name="title"
@@ -63,6 +65,7 @@ const AddMovie = (props) => {
                             onChange={onUpdateData}
                         />
                         <input
+                            className="form-control"
                             type="date"
                             id="release-date-search"
                             name="releaseDate"
@@ -70,6 +73,7 @@ const AddMovie = (props) => {
                             // placeholder="Search Release Date"
                             onChange={onUpdateData}
                         />
+                        </div>
                     </form>
                 </section>
 
@@ -77,6 +81,7 @@ const AddMovie = (props) => {
 
                 <section className="">
                     <div className="">
+                    <ul className="list-group movies-result-list">
                         {movies.map(movie => (
                             <MoviesResults 
                                 key={movie.id}
@@ -84,6 +89,7 @@ const AddMovie = (props) => {
                             />
                         ))
                         }
+                    </ul>  
                     </div>
                 </section>
 
@@ -97,7 +103,7 @@ const AddMovie = (props) => {
                                 movie={movie}
                             />  
                         ))
-                        }
+                        }  
                     </div>
                 </section>
         </div>

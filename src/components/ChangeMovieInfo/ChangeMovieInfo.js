@@ -60,16 +60,22 @@ const ChangeMovieInfo = (props) => {
     });
 
     return (
+        <div>
+        <h1>Modifier les informations d'un film</h1>
         <div className="form-wrapper">
-            <h2>Change Movie Info</h2>
-        <form onSubmit={changeMovieInfoFormik.handleSubmit}>
-            <div className="form-top-wrapper">
-                    <label htmlFor="title">Title</label>
+            <form onSubmit={changeMovieInfoFormik.handleSubmit}>
+                <div className="form-top-wrapper">
+                    {/* <label htmlFor="title">Title</label> */}
+                    <div className="title-input-wrapper">
+                    <h4>Title</h4>
+                    <div className="title-input">
                     <input
+                    className="form-control"
                     type="text"
                     id="title"
                     name="title"
                     onChange={changeMovieInfoFormik.handleChange}
+                    placeholder=""
                     value={changeMovieInfoFormik.values.title}
                     />
                     {/* error message */}
@@ -77,13 +83,19 @@ const ChangeMovieInfo = (props) => {
                         <div>{changeMovieInfoFormik.errors.title}</div>
                     ) : null}
                     {/* error message */}
-  
-                    <label htmlFor="releaseDate">Release Date</label>
+                    </div>
+                    </div>
+                    {/* <label htmlFor="releaseDate">Release Date</label> */}
+                    <div className="release-date-input-wrapper">
+                    <h4>Release Date</h4>
+                    <div className="release-date-input">
                     <input
-                    type="date"
+                    className="form-control"
+                    type="text"
                     id="release-date"
                     name="releaseDate"
                     onChange={changeMovieInfoFormik.handleChange}
+                    placeholder=""
                     value={changeMovieInfoFormik.values.releaseDate}
                     />
                     {/* error message */}
@@ -91,119 +103,140 @@ const ChangeMovieInfo = (props) => {
                         <div>{changeMovieInfoFormik.errors.releaseDate}</div>
                     ) : null}
                     {/* error message */}
-                </div>    
-            <div className="form-description-wrapper row">
-                <label htmlFor="description">Synopsis</label>
-                <textarea
-                id="description"
-                name="description"
-                onChange={changeMovieInfoFormik.handleChange}
-                value={changeMovieInfoFormik.values.description}
-                />
-                {/* error message */}
-                {changeMovieInfoFormik.errors.description ? (
-                    <div>{changeMovieInfoFormik.errors.description}</div>
-                ) : null}
-                {/* error message */}
-            </div>
-            <div className="form-bottom-wrapper"> 
-                <div className="form-genres">
-                    <span>Categories</span>
-                    <ul>
-                        {/* {genres.map(genre => ( */}
-                        <li>
-                            <input
-                            type="text"
-                            id="genres"
-                            name="genres"
-                            onChange={changeMovieInfoFormik.handleChange}
-                            value={changeMovieInfoFormik.values.genreName}
-                            />
-                            {/* error message */}
-                            {changeMovieInfoFormik.errors.genres ? (
-                                <div>{changeMovieInfoFormik.errors.genreName}</div>
-                            ) : null}
-                            {/* error message */} 
-                        </li>
-                        {/* ))}  */}
-                    </ul>  
+                    </div>
+                    </div>
                 </div>
+                <div className="form-description-wrapper">
+                    {/* <label htmlFor="description">Synopsis</label> */}
+                    <div className="description-input-wrapper">
+                    <h4>Synopsis</h4>
+                    <textarea
+                    className="form-control"
+                    rows="3"
+                    cols="90"
+                    id="description"
+                    name="description"
+                    onChange={changeMovieInfoFormik.handleChange}
+                    placeholder=""
+                    value={changeMovieInfoFormik.values.description}
+                    />
+                    {/* error message */}
+                    {changeMovieInfoFormik.errors.description ? (
+                        <div>{changeMovieInfoFormik.errors.description}</div>
+                    ) : null}
+                    {/* error message */}
+                    </div>
+                </div>
+                <div className="form-bottom-wrapper"> 
+                    <div className="form-genres">
+                        <h4>Categories</h4>
+                        <ul className="categories-list">
+                            {/* {genres.map(genre => ( */}
+                            <li key="">
+                                <label htmlFor="genres">Name</label>
+                                <input
+                                className="form-control"
+                                type="text"
+                                id="genres"
+                                name="genres"
+                                onChange={changeMovieInfoFormik.handleChange}
+                                placeholder=""
+                                value={changeMovieInfoFormik.genres}
+                                />
+                                {/* error message */}
+                                {changeMovieInfoFormik.errors.genres ? (
+                                    <div>{changeMovieInfoFormik.errors.genres}</div>
+                                ) : null}
+                                {/* error message */} 
+                            </li>
+                           {/* ))} */}
+                        </ul>  
+                    </div>
 
-                <div className="form-actors">
-                    <h4>Actors</h4>
-                    <ul>
-                        {/* {credits.map(actor => ( */}
-                        <li>
-                            <label htmlFor="actorName">Name</label>
-                            <input
-                            type="text"
-                            id="actor_name"
-                            name="actorName"
-                            onChange={changeMovieInfoFormik.handleChange}
-                            value={changeMovieInfoFormik.values.actorName}
-                            />
-                            {/* error message */}
-                            {changeMovieInfoFormik.errors.actorName ? (
-                                <div>{changeMovieInfoFormik.errors.actorName}</div>
-                            ) : null}
-                            {/* error message */}
-                            <label htmlFor="actorCharacter">Characters</label>
-                            <input
-                            type="text"
-                            id="actor.character"
-                            name="actorCharacter"
-                            onChange={changeMovieInfoFormik.handleChange}
-                            value={changeMovieInfoFormik.values.actorCharacter}
-                            />
-                            {/* error message */}
-                            {changeMovieInfoFormik.errors.actorCharacter ? (
-                                <div>{changeMovieInfoFormik.errors.actorCharacter}</div>
-                            ) : null}
-                            {/* error message */}
-                        </li>
-                        {/* ))} */}
-                    </ul>
+                    <div className="form-actors">
+                        <h4>Actors</h4>
+                        <ul className="actors-list">
+                            {/* {credits.map(actor => ( */}
+                            <li key="">
+                                <label htmlFor="actorName">Name</label>
+                                <input
+                                className="form-control"
+                                type="text"
+                                id="actor_name"
+                                name="actorName"
+                                onChange={changeMovieInfoFormik.handleChange}
+                                placeholder=""
+                                value={changeMovieInfoFormik.actorName}
+                                />
+                                {/* error message */}
+                                {changeMovieInfoFormik.errors.actorName ? (
+                                    <div>{changeMovieInfoFormik.errors.actorName}</div>
+                                ) : null}
+                                {/* error message */}
+                                <label htmlFor="actorCharacter">Characters</label>
+                                <input
+                                className="form-control"
+                                type="text"
+                                id="actor.character"
+                                name="actorCharacter"
+                                onChange={changeMovieInfoFormik.handleChange}
+                                placeholder=""
+                                value={changeMovieInfoFormik.actorCharacter}
+                                />
+                                {/* error message */}
+                                {changeMovieInfoFormik.errors.actorCharacter ? (
+                                    <div>{changeMovieInfoFormik.errors.actorCharacter}</div>
+                                ) : null}
+                                {/* error message */}
+                            </li>
+                            {/* ))} */}
+                        </ul>
+                    </div>
+                    <div className="form-similar-movies">
+                        <h4>Similar Movies</h4>
+                        <ul className="similar-movies-list">
+                            {/* {similarMovies.map(similar => ( */}
+                            <li key="">
+                                <label htmlFor="similarMovieTitle">Title</label>
+                                <input
+                                className="form-control"
+                                type="text"
+                                id="similar_movie_title"
+                                name="similarMovieTitle"
+                                onChange={changeMovieInfoFormik.handleChange}
+                                placeholder=""
+                                value={changeMovieInfoFormik.similarMovieTitle}
+                                />
+                                {/* error message */}
+                                {changeMovieInfoFormik.errors.similarMovieTitle ? (
+                                    <div>{changeMovieInfoFormik.errors.similarMovieTitle}</div>
+                                ) : null}
+                                {/* error message */}
+                                {/* <label htmlFor="similarMovieReleaseDate">Release Date</label>
+                                <input
+                                className="form-control"
+                                type="text"
+                                id="similar_movie_release_date"
+                                name="similarMovieReleaseDate"
+                                onChange={addMoviesFormik.handleChange}
+                                placeholder={similar.release_date}
+                                value={addMoviesFormik.similarMovieReleaseDate}
+                                /> */}
+                                {/* error message */}
+                                {/* {addMoviesFormik.errors.similarMovieReleaseDate ? (
+                                    <div>{addMoviesFormik.errors.similarMovieReleaseDate}</div>
+                                ) : null} */}
+                                {/* error message */}
+                            </li>
+                            {/* ))} */}
+                        </ul>
+                    </div>
                 </div>
-                <div className="form-similar-movies">
-                    <h4>Similar Movies</h4>
-                    <ul>
-                        {/* {similarMovies.map(similar => ( */}
-                        <li>
-                            <label htmlFor="similarMovieTitle">Title</label>
-                            <input
-                            type="text"
-                            id="similar_movie_title"
-                            name="similarMovieTitle"
-                            onChange={changeMovieInfoFormik.handleChange}
-                            value={changeMovieInfoFormik.values.similarMovieTitle}
-                            />
-                            {/* error message */}
-                            {changeMovieInfoFormik.errors.similarMovieTitle ? (
-                                <div>{changeMovieInfoFormik.errors.similarMovieTitle}</div>
-                            ) : null}
-                            {/* error message */}
-                            <label htmlFor="similarMovieReleaseDate">Release Date</label>
-                            <input
-                            type="text"
-                            id="similar_movie_release_date"
-                            name="similarMovieReleaseDate"
-                            onChange={changeMovieInfoFormik.handleChange}
-                            value={changeMovieInfoFormik.values.similarReleaseDate}
-                            />
-                            {/* error message */}
-                            {changeMovieInfoFormik.errors.similarMovieReleaseDate ? (
-                                <div>{changeMovieInfoFormik.errors.similarMovieReleaseDate}</div>
-                            ) : null}
-                        {/* error message */}
-                        </li>
-                        {/* ))}  */}
-                    </ul>
-                </div>
-            </div>
-            <button type="submit">
-            <span>Go</span>
-            </button>
-        </form>
+                <button className="btn btn-info" type="submit">
+                <span>Ajouter le film à votre bibliothéque</span>
+                </button>
+            </form>
+        </div>
         </div>
 	);
 };

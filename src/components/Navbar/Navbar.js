@@ -3,25 +3,40 @@ import {Link} from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <div className="navbar">
+            <div className="navbar">
                 <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/movies">Library</Link>
-                    </li>
-                    <li>
-                        <Link to="/movie">Selected Movie</Link>
-                    </li>
-                    <li>
-                        <Link to="/add">Add to Library</Link>
-                    </li>
-                    <li>
-                        <Link to="/change">Change movie info</Link>
-                    </li>
+                    <div>
+                        <li>
+                            <Link to="/">HOME</Link>
+                        </li>
+                        {/* <div className="bar"></div> */}
+                    </div>
+                    <div>
+                        <li>
+                            <Link to="/movies">Bibliothèque de films</Link>
+                        </li>
+                        <div className="bar"></div>
+                    </div>
+                    <div>
+                        <li>
+                            <Link to="/movie">Le film selectionné</Link>
+                        </li>
+                        <div className="bar"></div>
+                    </div>
+                    <div>
+                        <li>
+                            <Link to="/add">Ajouter un film</Link>
+                        </li>
+                        <div className="bar"></div>
+                    </div>
+                    <div>
+                        <li>
+                            <Link to="/change">Modifier un film</Link>
+                        </li>
+                        <div className="bar"></div>
+                    </div>
                 </ul>
-        </div>
+            </div>  
     );
 }
 

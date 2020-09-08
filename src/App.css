@@ -1,30 +1,49 @@
 /* Navbar */
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   /* z-index: 1; */
   width: 100%;
   padding: 2rem 0;
-  background-color: black;
+  font-weight: 200;
+  font-style: normal;
+  letter-spacing: 1px;
+  background-color: #01161C;
 }
 .navbar ul {
   display: flex;
   justify-content: space-evenly;
+  margin-top: 4rem;
+  margin-bottom: 0;
   padding: 0;
-  list-style-type: none;
+  list-style-type: none; 
 }
 .navbar a {
-  color: white;
+  color: #A89787;
   padding: 0.45rem;
   margin: 0 0.25rem;
 }
 a {
   text-decoration: none;
 }
-.navbar, a:hover {
-  /* color: blanchedalmond; */
-  color: darkorchid;
+.navbar, a:hover, a:active {
+  color: #FEF4DD;
   text-decoration: none;
+  /* border-bottom: 3px solid #FEF4DD; */
+}
+
+/* li:active {
+  border-bottom: 1px solid #A89787;
+} */
+
+.bar {
+  margin-top: 0.3rem;
+  width: 90%;
+  border-bottom: 1px solid #A89787;
+}
+
+.bar:hover {
+  color: #FEF4DD;
 }
 
 /* Components */
@@ -39,6 +58,10 @@ h2 {
   width: 100%;
   height: 100vh;
   background-color: white;
+}
+
+.home {
+  justify-content: flex-start;
 }
 
 @media (max-width: 700px) {

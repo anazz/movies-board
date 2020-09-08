@@ -4,21 +4,30 @@
     padding: 1rem 2rem;
 }
 
-#title-search {
-    margin-right: 1rem;
-    color: black;
+.search-form-wrapper {
+    display: flex;
+}
+
+#title, #release-date, #description {
+    color: #0D3B66;
 }
 
 .results-wrapper {
     margin: 2rem;
     text-align: center;
-    border: 1px solid rgb(202, 209, 138);
 }
 
 .results-list {
     margin: 1rem;
-    /* border: 1px solid lightblue; */
-    /* list-style: none; */
+    list-style: none;
+}
+
+.movies-result-list {
+    margin-left: 2rem;
+}
+
+.categories-list, .similar-movies-list {
+    flex-direction: column;
 }
 
 .release_date {
@@ -27,7 +36,7 @@
 
 .form-wrapper {
     margin: 2rem;
-    border: 1px solid rgb(202, 209, 138);
+    /* border: 1px solid rgb(202, 209, 138); */
 }
 .form-top-wrapper {
     display: flex;
@@ -41,8 +50,13 @@
 
 .form-bottom-wrapper {
     display: flex;
-    margin: 2rem 1rem;
+    margin: 2rem 0;
 }
+
+/* .title-input-wrapper, .release-date-input-wrapper, .description-input-wrapper {
+    display: flex;
+    flex-direction: column;
+} */
 
 label { 
     padding: 0 1rem;
@@ -74,3 +88,6 @@ span {
     padding-right: 2rem;
 }
 
+.release-date-input-wrapper {
+    margin: 0 1rem;
+}

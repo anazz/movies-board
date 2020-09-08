@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useFormik } from "formik";
+import bootstrap from 'bootstrap';
 import axios from 'axios';
 
 const AddMovieForm = (props) => {
 
     const [credits, setCredits] = useState([]);
     const [similarMovies, setSimilarMovies] = useState([]);
-    const [movieData, setMovieData] = useState({});
+    const [movieData, setMovieData] = useState();
     const [genres, setGenres] = useState([]);
 
     /* API KEY AND BASE URL FOR QUERIES */
@@ -49,10 +50,28 @@ const AddMovieForm = (props) => {
         });  
     }, []);
 
-    console.log(genres);
-    console.log(credits);
-    console.log(similarMovies);
+    // console.log(genres);
+    // console.log(credits);
+    // console.log(similarMovies);
 
+    /* QUERY FOR ALL */
+
+    // const requestGenres = axios.get(`${base_url}/movie/${props.movie.id}?api_key=${API_KEY}`);
+    // const requestCredits = axios.get(`${base_url}/movie/${props.movie.id}/credits?api_key=${API_KEY}`);
+    // const requestSimilarMovies = axios.get(`${base_url}/movie/${props.movie.id}/similar?api_key=${API_KEY}`);
+
+    // useEffect(() => {  
+    //     axios.all([requestGenres, requestCredits, requestSimilarMovies])
+    //     .then((genres, credits, similarMovies) => {
+    //         // console.log(genres, credits, similarMovies);
+    //         setMovieData(genres, credits, similarMovies);
+    //     }).catch((error) => {
+    //         console.log(error);
+    //     });  
+    // }, []);
+
+    // console.log(props.movie);
+    
     /* FORM FORMIK VALUES VALIDATION AND SUBMIT */
 
     const addMoviesFormik = useFormik({
@@ -112,8 +131,12 @@ const AddMovieForm = (props) => {
         <div className="form-wrapper">
             <form onSubmit={addMoviesFormik.handleSubmit}>
                 <div className="form-top-wrapper">
-                    <label htmlFor="title">Title</label>
+                    {/* <label htmlFor="title">Title</label> */}
+                    <div className="title-input-wrapper">
+                    <h4>Title</h4>
+                    <div className="title-input">
                     <input
+                    className="form-control"
                     type="text"
                     id="title"
                     name="title"
@@ -126,8 +149,14 @@ const AddMovieForm = (props) => {
                         <div>{addMoviesFormik.errors.title}</div>
                     ) : null}
                     {/* error message */}
-                    <label htmlFor="releaseDate">Release Date</label>
+                    </div>
+                    </div>
+                    {/* <label htmlFor="releaseDate">Release Date</label> */}
+                    <div className="release-date-input-wrapper">
+                    <h4>Release Date</h4>
+                    <div className="release-date-input">
                     <input
+                    className="form-control"
                     type="text"
                     id="release-date"
                     name="releaseDate"
@@ -140,10 +169,17 @@ const AddMovieForm = (props) => {
                         <div>{addMoviesFormik.errors.releaseDate}</div>
                     ) : null}
                     {/* error message */}
+                    </div>
+                    </div>
                 </div>
                 <div className="form-description-wrapper">
-                    <label htmlFor="description">Synopsis</label>
+                    {/* <label htmlFor="description">Synopsis</label> */}
+                    <div className="description-input-wrapper">
+                    <h4>Synopsis</h4>
                     <textarea
+                    className="form-control"
+                    rows="3"
+                    cols="90"
                     id="description"
                     name="description"
                     onChange={addMoviesFormik.handleChange}
@@ -155,14 +191,17 @@ const AddMovieForm = (props) => {
                         <div>{addMoviesFormik.errors.description}</div>
                     ) : null}
                     {/* error message */}
+                    </div>
                 </div>
                 <div className="form-bottom-wrapper"> 
                     <div className="form-genres">
                         <h4>Categories</h4>
-                        <ul>
+                        <ul className="categories-list">
                             {genres.map(genre => (
-                            <li>
+                            <li key={genre.id}>
+                                <label htmlFor="genres">Name</label>
                                 <input
+                                className="form-control"
                                 type="text"
                                 id="genres"
                                 name="genres"
@@ -176,17 +215,18 @@ const AddMovieForm = (props) => {
                                 ) : null}
                                 {/* error message */} 
                             </li>
-                            ))} 
+                           ))}
                         </ul>  
                     </div>
 
                     <div className="form-actors">
                         <h4>Actors</h4>
-                        <ul>
+                        <ul className="actors-list">
                             {credits.map(actor => (
-                            <li>
+                            <li key={actor.cast_id}>
                                 <label htmlFor="actorName">Name</label>
                                 <input
+                                className="form-control"
                                 type="text"
                                 id="actor_name"
                                 name="actorName"
@@ -201,6 +241,7 @@ const AddMovieForm = (props) => {
                                 {/* error message */}
                                 <label htmlFor="actorCharacter">Characters</label>
                                 <input
+                                className="form-control"
                                 type="text"
                                 id="actor.character"
                                 name="actorCharacter"
@@ -219,11 +260,12 @@ const AddMovieForm = (props) => {
                     </div>
                     <div className="form-similar-movies">
                         <h4>Similar Movies</h4>
-                        <ul>
+                        <ul className="similar-movies-list">
                             {similarMovies.map(similar => (
-                            <li>
+                            <li key={similar.id}>
                                 <label htmlFor="similarMovieTitle">Title</label>
                                 <input
+                                className="form-control"
                                 type="text"
                                 id="similar_movie_title"
                                 name="similarMovieTitle"
@@ -236,27 +278,28 @@ const AddMovieForm = (props) => {
                                     <div>{addMoviesFormik.errors.similarMovieTitle}</div>
                                 ) : null}
                                 {/* error message */}
-                                <label htmlFor="similarMovieReleaseDate">Release Date</label>
+                                {/* <label htmlFor="similarMovieReleaseDate">Release Date</label>
                                 <input
+                                className="form-control"
                                 type="text"
                                 id="similar_movie_release_date"
                                 name="similarMovieReleaseDate"
                                 onChange={addMoviesFormik.handleChange}
                                 placeholder={similar.release_date}
                                 value={addMoviesFormik.similarMovieReleaseDate}
-                                />
+                                /> */}
                                 {/* error message */}
-                                {addMoviesFormik.errors.similarMovieReleaseDate ? (
+                                {/* {addMoviesFormik.errors.similarMovieReleaseDate ? (
                                     <div>{addMoviesFormik.errors.similarMovieReleaseDate}</div>
-                                ) : null}
-                            {/* error message */}
+                                ) : null} */}
+                                {/* error message */}
                             </li>
-                            ))} 
+                            ))}
                         </ul>
                     </div>
                 </div>
-                <button type="submit">
-                <span>Go</span>
+                <button className="btn btn-info" type="submit">
+                <span>Ajouter le film à votre bibliothéque</span>
                 </button>
             </form>
         </div>

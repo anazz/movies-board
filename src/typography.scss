@@ -1,0 +1,10 @@
+@font-face {
+    font-weight: normal;
+    font-family: 'NJBoldNormal';
+    font-style: normal;
+    src: local('NJBoldNormal'),
+      url('/public/fonts/ArrowMedium.woff2') format('woff2'),
+      url('/public/fonts/ArrowMedium.woff') format('woff');
+}
+
+$font-primary: 'NJBoldNormal', 'Arial', sans-serif;
