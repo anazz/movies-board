@@ -73,7 +73,7 @@ function App() {
             />
             <Route
                 exact
-                path='/change'
+                path='/edit'
                 render={(props)=>
                   <Fragment>
                     <ChangeMovieInfo prods={ChangeMovieInfo}/>                

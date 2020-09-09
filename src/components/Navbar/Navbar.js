@@ -35,7 +35,7 @@ const Navbar = () => {
                             </div>
                             <div>
                                 <li><span class="slash">/</span>
-                                    <Link to="/change">Modifier un film</Link>
+                                    <Link to="/edit">Modifier un film</Link>
                                 </li>
                                 <div className="bar"></div>
                             </div>
