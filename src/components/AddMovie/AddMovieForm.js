@@ -5,10 +5,10 @@ import axios from 'axios';
 
 const AddMovieForm = (props) => {
 
-    const [credits, setCredits] = useState([]);
+    const [actors, setActors] = useState([]);
     const [similarMovies, setSimilarMovies] = useState([]);
     const [movieData, setMovieData] = useState();
-    const [genres, setGenres] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     /* API KEY AND BASE URL FOR QUERIES */
 
@@ -21,7 +21,7 @@ const AddMovieForm = (props) => {
         axios.get(`${base_url}/movie/${props.movie.id}?api_key=${API_KEY}`)
         .then((r) => (
             // console.log(r.data)
-            setGenres(r.data.genres)
+            setCategories(r.data.genres)
         )).catch((error) => {
             console.log(error);
         });  
@@ -30,47 +30,47 @@ const AddMovieForm = (props) => {
     /* QUERY FOR THE MOVIE CAST */
 
     useEffect(() => {  
-        axios.get(`${base_url}/movie/${props.movie.id}/credits?api_key=${API_KEY}`)
-        .then((r) => (
-            setCredits(r.data.cast.slice(0, 2))
-        )).catch((error) => {
-            console.log(error);
-        });  
-    }, []);
+         axios.get(`${base_url}/movie/${props.movie.id}/credits?api_key=${API_KEY}`)
+         .then((r) => (
+             setActors(r.data.cast.slice(0, 2))
+         )).catch((error) => {
+             console.log(error);
+         });  
+     }, []);
 
-    /* QUERY FOR SIMILAR MOVIES */
+     /* QUERY FOR SIMILAR MOVIES */
 
-    useEffect(() => {  
-        axios.get(`${base_url}/movie/${props.movie.id}/similar?api_key=${API_KEY}`)
-        .then((r) => (
-            // console.log(r.data.results.slice(0, 3))
-            setSimilarMovies(r.data.results.slice(0, 3))
-        )).catch((error) => {
-            console.log(error);
-        });  
-    }, []);
+     useEffect(() => {  
+         axios.get(`${base_url}/movie/${props.movie.id}/similar?api_key=${API_KEY}`)
+         .then((r) => (
+             // console.log(r.data.results.slice(0, 3))
+             setSimilarMovies(r.data.results.slice(0, 3))
+         )).catch((error) => {
+             console.log(error);
+         });  
+     }, []);
 
-    // console.log(genres);
-    // console.log(credits);
-    // console.log(similarMovies);
+     console.log(categories);
+     console.log(actors);
+     console.log(similarMovies);
 
     /* QUERY FOR ALL */
 
-    // const requestGenres = axios.get(`${base_url}/movie/${props.movie.id}?api_key=${API_KEY}`);
-    // const requestCredits = axios.get(`${base_url}/movie/${props.movie.id}/credits?api_key=${API_KEY}`);
-    // const requestSimilarMovies = axios.get(`${base_url}/movie/${props.movie.id}/similar?api_key=${API_KEY}`);
+    const requestGenres = axios.get(`${base_url}/movie/${props.movie.id}?api_key=${API_KEY}`);
+    const requestCredits = axios.get(`${base_url}/movie/${props.movie.id}/credits?api_key=${API_KEY}`);
+    const requestSimilarMovies = axios.get(`${base_url}/movie/${props.movie.id}/similar?api_key=${API_KEY}`);
 
-    // useEffect(() => {  
-    //     axios.all([requestGenres, requestCredits, requestSimilarMovies])
-    //     .then((genres, credits, similarMovies) => {
-    //         // console.log(genres, credits, similarMovies);
-    //         setMovieData(genres, credits, similarMovies);
-    //     }).catch((error) => {
-    //         console.log(error);
-    //     });  
-    // }, []);
+    useEffect(() => {  
+        axios.all([requestGenres, requestCredits, requestSimilarMovies])
+        .then((genres, credits, similarMovies) => {
+            // console.log(genres, credits, similarMovies);
+            setMovieData(genres, credits, similarMovies);
+        }).catch((error) => {
+            console.log(error);
+        });  
+    }, []);
 
-    // console.log(props.movie);
+    console.log(props.actorCharacter);
     
     /* FORM FORMIK VALUES VALIDATION AND SUBMIT */
 
@@ -197,8 +197,8 @@ const AddMovieForm = (props) => {
                     <div className="form-genres">
                         <h4>Categories</h4>
                         <ul className="categories-list">
-                            {genres.map(genre => (
-                            <li key={genre.id}>
+                            {categories.map(category => (
+                           <li key={category.id}>
                                 <label htmlFor="genres">Name</label>
                                 <input
                                 className="form-control"
@@ -206,7 +206,7 @@ const AddMovieForm = (props) => {
                                 id="genres"
                                 name="genres"
                                 onChange={addMoviesFormik.handleChange}
-                                placeholder={genre.name}
+                                placeholder={category.name}
                                 value={addMoviesFormik.genres}
                                 />
                                 {/* error message */}
@@ -216,13 +216,13 @@ const AddMovieForm = (props) => {
                                 {/* error message */} 
                             </li>
                            ))}
-                        </ul>  
+                        </ul>   
                     </div>
 
                     <div className="form-actors">
                         <h4>Actors</h4>
                         <ul className="actors-list">
-                            {credits.map(actor => (
+                            {actors.map(actor => (
                             <li key={actor.cast_id}>
                                 <label htmlFor="actorName">Name</label>
                                 <input
@@ -293,7 +293,7 @@ const AddMovieForm = (props) => {
                                     <div>{addMoviesFormik.errors.similarMovieReleaseDate}</div>
                                 ) : null} */}
                                 {/* error message */}
-                            </li>
+                           </li>
                             ))}
                         </ul>
                     </div>

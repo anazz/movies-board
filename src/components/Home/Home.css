@@ -1,7 +1,7 @@
 .home-section {
     width: 100%;
     height: 100vh;
-    background-color: white;
+    /* background-image: url("./movie-posters.jpeg"); */
 }
 
 h1 {
@@ -12,7 +12,7 @@ h1 {
 }
 
 .app-description {
-    color: darkorchid;
+    color: #FEF4DD;
     font-size: 20px;
     text-align: center;
     

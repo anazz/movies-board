@@ -233,7 +233,7 @@ const ChangeMovieInfo = (props) => {
                     </div>
                 </div>
                 <button className="btn btn-info" type="submit">
-                <span>Ajouter le film à votre bibliothéque</span>
+                <span>Valider les modifications</span>
                 </button>
             </form>
         </div>

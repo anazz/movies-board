@@ -28,8 +28,8 @@ function App() {
   return (
     <Router>
       <div className='App'>
-        <Navbar />   
-          <div className='container'>
+        {/* <div className='container'> */}
+            <Navbar />   
             <Switch>
             <Route 
                   exact 
@@ -39,8 +39,8 @@ function App() {
                       <Home prods={Home}/>
                     </Fragment>
                   }
-                /> 
-              <Route
+              />
+            <Route
                 exact
                 path='/movies'
                 render={()=>
@@ -50,8 +50,8 @@ function App() {
                     />
                   </Fragment>
                 }
-              />
-              <Route
+            />
+            <Route
                 exact
                 path='/movie'
                 render={()=>
@@ -61,8 +61,8 @@ function App() {
                     /> 
                   </Fragment>
                 }
-              />
-              <Route
+            />
+            <Route
                 exact
                 path='/add'
                 render={(props)=>
@@ -70,8 +70,8 @@ function App() {
                     <AddMovie prods={AddMovie}/>
                   </Fragment>
                 }
-              />
-              <Route
+            />
+            <Route
                 exact
                 path='/change'
                 render={(props)=>
@@ -79,9 +79,9 @@ function App() {
                     <ChangeMovieInfo prods={ChangeMovieInfo}/>                
                   </Fragment>
                 }  
-              />
+            />
             </Switch>
-         </div>
+         {/* </div> */}
       </div>
     </Router>
   )  

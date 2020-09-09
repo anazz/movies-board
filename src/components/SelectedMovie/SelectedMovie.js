@@ -15,11 +15,11 @@ const movieSelected = props.movies.map((movie) => (
     return (
             <div className="movie-wrapper">
                 <div className="bg-wrapper">
-                    <div className="bg">
+                    <div className="bg-movie">
                     {props.movies.map((movie) => (
-                    <img src={movie.backdrop} alt="movie poster" className="bg-poster" />
+                    <img src={movie.backdrop} alt="movie poster" className="bg-movie-poster" />
                     ))}
-                    <div className="bg-layer"></div> 
+                    <div className="bg-layer-movie"></div> 
                     </div>              
                 </div>
                         

@@ -5,32 +5,17 @@ import MoviesResults from './MoviesResults';
 import AddMovieForm from './AddMovieForm';
 import './AddMovie.css';
 
-const AddMovie = (props) => {
-
-    /* Search in form by movie title and movie release date */
-
-    const [formData, setFormData] = useState({
-		title: '',
-		releaseDate: '',
-    });
-
-    /* Setting the formData */
-    
-    const onUpdateData = (event) => {
-        event.preventDefault();
-        const name = event.target.name;
-        const value = event.target.value;
-        const data = { ...formData };
-            data[name] = value;
-            setFormData(data);
-            console.log(data);
-    }
-
+const AddMovie = (props) => { 
     /* Setting the State and the values for the api request and response */
 
     const [movies, setMovies] = useState([]);
     const API_KEY = process.env.REACT_APP_API_KEY;
     const base_url = `https://api.themoviedb.org/3`;
+
+    const [formData, setFormData] = useState({
+		title: '',
+		releaseDate: '',
+    });
 
     /* api request, response and data retrieve in movies */
 
@@ -45,12 +30,39 @@ const AddMovie = (props) => {
         }
     }, [formData.title]);
 
+    // console.log(movies);
+
+    /* Setting the formData */
+    
+    const onUpdateData = (event) => {
+        event.preventDefault();
+        const name = event.target.name;
+        const value = event.target.value;
+        const data = { ...formData };
+            data[name] = value;
+            setFormData(data);
+            console.log(data); 
+    }
+
+    // const categoryName = props.category_name;
+    // console.log(categoryName);
+    // console.log(props.category_name);
+    // console.log(props.actor_name);
+    // console.log(props.actor_character);
+    // console.log(props.similar_movies);
+
     return (
         <div className="wrapper">
-
-            <h1>Ajouter un film</h1>
-
-            {/* SEARCH FILTERS */}
+            {/* <div className="top-wrapper"> */}
+                {/* <div className="bg-wrapper">
+                        <div className="bg">
+                            <img src="./movie-posters.jpeg" alt="movie poster" className="bg-poster" />
+                            <div className="bg-layer"></div> 
+                        </div>              
+                </div> */}
+                <h1>Ajouter un film</h1>
+            {/* </div> */}
+                {/* SEARCH FILTERS */}
 
                 <div className="search-wrapper">
                     <form>
@@ -76,37 +88,28 @@ const AddMovie = (props) => {
                         </div>
                     </form>
                 </div>
-
             <div className="list-form-wrapper">
-                {/* Movies List */}
+                    {/* Movies List */}
 
-                <div className="">
-                    <div className="">
-                    <ul className="list-group movies-result-list">
-                        {movies.map(movie => (
-                            <MoviesResults 
-                                key={movie.id}
-                                movie={movie}
-                            />
-                        ))
-                        }
-                    </ul>  
-                    </div>
-                </div>
+                        <ul className="list-group movies-result-list">
+                            {movies.map(movie => (
+                                <MoviesResults 
+                                    key={movie.id}
+                                    movie={movie}
+                                />
+                            ))
+                            }
+                        </ul>  
 
-                {/* Add Movies Form */}
-
-                <div>    
-                    <div className="">
-                        {movies.map(movie => (
-                            <AddMovieForm 
-                                key={movie.id}
-                                movie={movie}
-                            />  
-                        ))
-                        }  
-                    </div>
-                </div>
+                    {/* Add Movies Form */}
+   
+                            {movies.map(movie => (
+                                <AddMovieForm 
+                                    key={movie.id}
+                                    movie={movie}
+                                />
+                            ))
+                            }  
             </div>
         </div>
     );

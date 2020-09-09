@@ -18,6 +18,7 @@ const Movie = (props) => {
                 </div>
                 <div className="col">
                     <img src={props.movie.poster} alt="movie poster" className="main-poster"/>
+                    
                 </div>
             </div>
             <div className="row">
@@ -35,6 +36,12 @@ const Movie = (props) => {
                 ))}
                 </ul>
                 </div>
+            </div>
+            <div className="row">
+                    <div className="col buttons">
+                        <button type="button" class="btn btn-outline-secondary">Modifier les infos</button>
+                        <button type="button" class="btn btn-outline-secondary">Supprimer le film</button>
+                    </div>
             </div>
             <div className="row similar-movies-wrapper">
                 <div className="col">

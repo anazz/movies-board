@@ -5,36 +5,41 @@ const Navbar = () => {
     return (
             <div className="navbar">
                 <ul>
-                    <div>
-                        <li>
-                            <Link to="/">HOME</Link>
-                        </li>
-                        {/* <div className="bar"></div> */}
-                    </div>
-                    <div>
-                        <li>
-                            <Link to="/movies">Bibliothèque de films</Link>
-                        </li>
-                        <div className="bar"></div>
-                    </div>
-                    <div>
-                        <li>
-                            <Link to="/movie">Le film selectionné</Link>
-                        </li>
-                        <div className="bar"></div>
-                    </div>
-                    <div>
-                        <li>
-                            <Link to="/add">Ajouter un film</Link>
-                        </li>
-                        <div className="bar"></div>
-                    </div>
-                    <div>
-                        <li>
-                            <Link to="/change">Modifier un film</Link>
-                        </li>
-                        <div className="bar"></div>
-                    </div>
+                        <div className="navbar-left">
+                            <span>MOVIES BOARD</span>
+                        </div>
+                        <div className="navbar-right"> 
+                            <div>
+                                <li> 
+                                    <Link to="/">HOME</Link>
+                                </li>
+                                {/* <div className="bar"></div> */}
+                            </div>
+                            <div>
+                                <li><span class="slash">/</span>
+                                    <Link to="/movies">Bibliothèque de films</Link>
+                                </li>
+                                <div className="bar"></div>
+                            </div>
+                            <div>
+                                <li><span class="slash">/</span>
+                                    <Link to="/movie">Le film selectionné</Link>
+                                </li>
+                                <div className="bar"></div>
+                            </div>
+                            <div>
+                                <li><span class="slash">/</span>
+                                    <Link to="/add">Ajouter un film</Link>
+                                </li>
+                                <div className="bar"></div>
+                            </div>
+                            <div>
+                                <li><span class="slash">/</span>
+                                    <Link to="/change">Modifier un film</Link>
+                                </li>
+                                <div className="bar"></div>
+                            </div>
+                        </div>
                 </ul>
             </div>  
     );

@@ -1,3 +1,7 @@
+/* .wrapper-add-movie {
+    background-color: rgba(1, 23, 30, 0.81);
+} */
+
 .search-wrapper {
     display: flex;
     justify-content: center;
@@ -8,12 +12,12 @@
     display: flex;
 }
 
-#title, #release-date, #description {
+#title, #release-date, #description, #genres {
     /* color: #0D3B66; */
     color: #A89787;
 }
 
-.list-form-wrapper {
+.form-wrapper {
     width: 120%;
     height: auto;
     padding: 2rem 0;
@@ -30,8 +34,8 @@
     list-style: none;
 }
 
-.movies-result-list {
-    margin-left: 2rem;
+.movie-results-list {
+    padding: 0;
 }
 
 .categories-list, .similar-movies-list {
@@ -43,7 +47,7 @@
 }
 
 .form-wrapper {
-    margin: 2rem;
+    padding: 2rem;
     /* border: 1px solid rgb(202, 209, 138); */
 }
 .form-top-wrapper {
