@@ -13,7 +13,6 @@ const Navbar = () => {
                                 <li> 
                                     <Link to="/">HOME</Link>
                                 </li>
-                                {/* <div className="bar"></div> */}
                             </div>
                             <div>
                                 <li><span class="slash">/</span>

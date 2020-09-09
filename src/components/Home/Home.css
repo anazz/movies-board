@@ -17,3 +17,11 @@ h1 {
     text-align: center;
     
 }
+
+a {
+    color: #FEF4DD;
+}
+
+.movies-link:hover,  .movies-link:active{
+    color: #FE654F;
+}

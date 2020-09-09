@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useFormik } from "formik";
 import MoviesResults from './MoviesResults';
 import AddMovieForm from './AddMovieForm';
 import './AddMovie.css';
@@ -30,8 +29,6 @@ const AddMovie = (props) => {
         }
     }, [formData.title]);
 
-    // console.log(movies);
-
     /* Setting the formData */
     
     const onUpdateData = (event) => {
@@ -44,24 +41,10 @@ const AddMovie = (props) => {
             console.log(data); 
     }
 
-    // const categoryName = props.category_name;
-    // console.log(categoryName);
-    // console.log(props.category_name);
-    // console.log(props.actor_name);
-    // console.log(props.actor_character);
-    // console.log(props.similar_movies);
-
     return (
         <div className="wrapper">
-            {/* <div className="top-wrapper"> */}
-                {/* <div className="bg-wrapper">
-                        <div className="bg">
-                            <img src="./movie-posters.jpeg" alt="movie poster" className="bg-poster" />
-                            <div className="bg-layer"></div> 
-                        </div>              
-                </div> */}
                 <h1>Ajouter un film</h1>
-            {/* </div> */}
+
                 {/* SEARCH FILTERS */}
 
                 <div className="search-wrapper">
@@ -73,7 +56,6 @@ const AddMovie = (props) => {
                             id="title-search"
                             name="title"
                             value={formData.title}
-                            // placeholder="Search Title"
                             onChange={onUpdateData}
                         />
                         <input

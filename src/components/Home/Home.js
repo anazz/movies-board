@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
@@ -17,7 +18,9 @@ const Home = () => {
             </div>
             <div className="row">
                 <div className="col app-description">
-                    <p>Un site pour une bibliothéque de films personnalisée</p>
+                <Link to="/movies">
+                    <p className="movies-link">Un site pour une bibliothéque de films personnalisée</p>
+                </Link>    
                 </div>
             </div>
         </div>

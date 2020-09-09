@@ -28,7 +28,6 @@ function App() {
   return (
     <Router>
       <div className='App'>
-        {/* <div className='container'> */}
             <Navbar />   
             <Switch>
             <Route 
@@ -81,7 +80,6 @@ function App() {
                 }  
             />
             </Switch>
-         {/* </div> */}
       </div>
     </Router>
   )  

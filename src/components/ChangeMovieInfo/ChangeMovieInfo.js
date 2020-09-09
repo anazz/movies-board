@@ -65,7 +65,6 @@ const ChangeMovieInfo = (props) => {
         <div className="update-form-wrapper">
             <form onSubmit={changeMovieInfoFormik.handleSubmit}>
                 <div className="update-form-top-wrapper">
-                    {/* <label htmlFor="title">Title</label> */}
                     <div className="title-input-wrapper">
                     <h4>Title</h4>
                     <div className="title-input">
@@ -85,7 +84,6 @@ const ChangeMovieInfo = (props) => {
                     {/* error message */}
                     </div>
                     </div>
-                    {/* <label htmlFor="releaseDate">Release Date</label> */}
                     <div className="release-date-input-wrapper">
                     <h4>Release Date</h4>
                     <div className="release-date-input">
@@ -107,7 +105,6 @@ const ChangeMovieInfo = (props) => {
                     </div>
                 </div>
                 <div className="update-form-description-wrapper">
-                    {/* <label htmlFor="description">Synopsis</label> */}
                     <div className="description-input-wrapper">
                     <h4>Synopsis</h4>
                     <textarea
@@ -131,7 +128,6 @@ const ChangeMovieInfo = (props) => {
                     <div className="update-form-genres">
                         <h4>Categories</h4>
                         <ul className="categories-list">
-                            {/* {genres.map(genre => ( */}
                             <li key="">
                                 <label htmlFor="genres">Name</label>
                                 <input
@@ -149,14 +145,12 @@ const ChangeMovieInfo = (props) => {
                                 ) : null}
                                 {/* error message */} 
                             </li>
-                           {/* ))} */}
                         </ul>  
                     </div>
 
                     <div className="update-form-actors">
                         <h4>Actors</h4>
                         <ul className="actors-list">
-                            {/* {credits.map(actor => ( */}
                             <li key="">
                                 <label htmlFor="actorName">Name</label>
                                 <input
@@ -189,13 +183,11 @@ const ChangeMovieInfo = (props) => {
                                 ) : null}
                                 {/* error message */}
                             </li>
-                            {/* ))} */}
                         </ul>
                     </div>
                     <div className="update-form-similar-movies">
                         <h4>Similar Movies</h4>
                         <ul className="similar-movies-list">
-                            {/* {similarMovies.map(similar => ( */}
                             <li key="">
                                 <label htmlFor="similarMovieTitle">Title</label>
                                 <input
@@ -228,7 +220,6 @@ const ChangeMovieInfo = (props) => {
                                 ) : null} */}
                                 {/* error message */}
                             </li>
-                            {/* ))} */}
                         </ul>
                     </div>
                 </div>

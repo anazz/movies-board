@@ -6,10 +6,8 @@ import './Movie.css';
 const Movie = (props) => {
 	return (
         <div className="">
-            {/* <img className="movie-backdrop" src="" alt="" /> */}
             <div className="row movie-info">
                 <div className="col">
-                    {/* <img src={props.movie.backdrop} alt="movie poster" className="bg-poster" /> */}
                     <div className="movie-top-info">
                     <span className="movie-release-date">Sortie en salles: {props.movie.release_date}</span>
                         <h3 class="movie-title">{props.movie.title}</h3>

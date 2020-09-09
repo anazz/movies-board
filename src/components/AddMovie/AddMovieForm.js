@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useFormik } from "formik";
 import bootstrap from 'bootstrap';
 import axios from 'axios';
-import { isEmptyObject } from 'jquery';
 
 const AddMovieForm = (props) => {
 
@@ -21,7 +20,6 @@ const AddMovieForm = (props) => {
     useEffect(() => {  
         axios.get(`${base_url}/movie/${props.movie.id}?api_key=${API_KEY}`)
         .then((r) => (
-            // console.log(r.data)
             setCategories(r.data.genres)
         )).catch((error) => {
             console.log(error);
@@ -44,7 +42,6 @@ const AddMovieForm = (props) => {
      useEffect(() => {  
          axios.get(`${base_url}/movie/${props.movie.id}/similar?api_key=${API_KEY}`)
          .then((r) => (
-             // console.log(r.data.results.slice(0, 3))
              setSimilarMovies(r.data.results.slice(0, 3))
          )).catch((error) => {
              console.log(error);
@@ -57,21 +54,18 @@ const AddMovieForm = (props) => {
 
     /* QUERY FOR ALL */
 
-    const requestGenres = axios.get(`${base_url}/movie/${props.movie.id}?api_key=${API_KEY}`);
-    const requestCredits = axios.get(`${base_url}/movie/${props.movie.id}/credits?api_key=${API_KEY}`);
-    const requestSimilarMovies = axios.get(`${base_url}/movie/${props.movie.id}/similar?api_key=${API_KEY}`);
+    // const requestGenres = axios.get(`${base_url}/movie/${props.movie.id}?api_key=${API_KEY}`);
+    // const requestCredits = axios.get(`${base_url}/movie/${props.movie.id}/credits?api_key=${API_KEY}`);
+    // const requestSimilarMovies = axios.get(`${base_url}/movie/${props.movie.id}/similar?api_key=${API_KEY}`);
 
-    useEffect(() => {  
-        axios.all([requestGenres, requestCredits, requestSimilarMovies])
-        .then((genres, credits, similarMovies) => {
-            // console.log(genres, credits, similarMovies);
-            setMovieData(genres, credits, similarMovies);
-        }).catch((error) => {
-            console.log(error);
-        });  
-    }, []);
-
-    console.log(props.actorCharacter);
+    // useEffect(() => {  
+    //     axios.all([requestGenres, requestCredits, requestSimilarMovies])
+    //     .then((genres, credits, similarMovies) => {
+    //         setMovieData(genres, credits, similarMovies);
+    //     }).catch((error) => {
+    //         console.log(error);
+    //     });  
+    // }, []);
     
     /* FORM FORMIK VALUES VALIDATION AND SUBMIT */
 
@@ -132,7 +126,6 @@ const AddMovieForm = (props) => {
         <div className="form-wrapper">
             <form onSubmit={addMoviesFormik.handleSubmit}>
                 <div className="form-top-wrapper">
-                    {/* <label htmlFor="title">Title</label> */}
                     <div className="title-input-wrapper">
                     <h4>Title</h4>
                     <div className="title-input">
@@ -152,7 +145,6 @@ const AddMovieForm = (props) => {
                     {/* error message */}
                     </div>
                     </div>
-                    {/* <label htmlFor="releaseDate">Release Date</label> */}
                     <div className="release-date-input-wrapper">
                     <h4>Release Date</h4>
                     <div className="release-date-input">
@@ -174,7 +166,6 @@ const AddMovieForm = (props) => {
                     </div>
                 </div>
                 <div className="form-description-wrapper">
-                    {/* <label htmlFor="description">Synopsis</label> */}
                     <div className="description-input-wrapper">
                     <h4>Synopsis</h4>
                     <textarea
