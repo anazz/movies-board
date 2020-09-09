@@ -13,7 +13,7 @@ const Home = () => {
             </div>
             <div className="row app-main-title">
                 <div className="col-12 app-main-title">
-                    <h1>Movie Board</h1>
+                    <h1>Movies Board</h1>
                 </div>
             </div>
             <div className="row">
