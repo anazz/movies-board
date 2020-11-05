@@ -32,7 +32,6 @@ const movieSelected = props.movies.map((movie) => (
                     </div> */}
                     
                     <div className="movie-section">
-                        {/* <div className="bg-section"></div> */}
                         <h1 className="movie-page-title">Le film</h1>
                         {movieSelected}
                     </div>
