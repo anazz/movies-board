@@ -1,8 +1,10 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
-import './App.css';
+import './custom.scss';
+import './style/styles.scss';
+import './App.scss';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import MoviesLibrary from './components/MoviesLibrary/MoviesLibrary';

@@ -1,292 +1,241 @@
 import React, { useState, useEffect } from 'react';
-import { useFormik } from "formik";
-import bootstrap from 'bootstrap';
 import axios from 'axios';
+import { useHistory } from "react-router-dom";
+import './AddMovie.scss';
 
 const AddMovieForm = (props) => {
 
+    const movieID = props.movie.id;
     const [actors, setActors] = useState([]);
     const [similarMovies, setSimilarMovies] = useState([]);
-    const [movieData, setMovieData] = useState();
-    const [categories, setCategories] = useState([]);
+    const [movies, setMovies] = useState({
+        title: "",
+        release_date: "",
+        categories: [],
+        description: "",
+        poster: "",
+        backdrop: "",
+    });
 
-    /* API KEY AND BASE URL FOR QUERIES */
+    /* QUERY FOR THE MOVIE CAST & SIMILAR MOVIES */
 
     const API_KEY = process.env.REACT_APP_API_KEY;
     const base_url = `https://api.themoviedb.org/3`;
 
-    /* QUERY FOR MOVIE GENRES */
-
-    useEffect(() => {  
-        axios.get(`${base_url}/movie/${props.movie.id}?api_key=${API_KEY}`)
-        .then((r) => (
-            setCategories(r.data.genres)
-        )).catch((error) => {
+    useEffect(() => {
+        axios.get(`${base_url}/movie/${movieID}?api_key=${API_KEY}&language=en-US&page=1`)
+            .then((response) => {
+            setMovies({
+                id: response.data.id,
+                title: response.data.title,
+                release_date: response.data.release_date,
+                categories: response.data.genres,
+                description: response.data.overview,
+                poster: `https://image.tmdb.org/t/p/w342${response.data.poster_path}`,
+                backdrop: `https://image.tmdb.org/t/p/w342${response.data.backdrop_path}`,
+            });
+            // console.log(response.data, movieData.categories);
+        }).catch((error) => {
             console.log(error);
         });  
-    }, []);
 
-    /* QUERY FOR THE MOVIE CAST */
+        axios.get(`${base_url}/movie/${movieID}/credits?api_key=${API_KEY}`)
+        .then((r) => {
+            // console.log(r.data.cast.slice(0, 3));
+            setActors(r.data.cast.slice(0, 3));
+        }).catch((error) => {
+            console.log(error);
+        });
 
-    useEffect(() => {  
-         axios.get(`${base_url}/movie/${props.movie.id}/credits?api_key=${API_KEY}`)
-         .then((r) => (
-             setActors(r.data.cast.slice(0, 2))
-         )).catch((error) => {
-             console.log(error);
-         });  
-     }, []);
-
-     /* QUERY FOR SIMILAR MOVIES */
-
-     useEffect(() => {  
-         axios.get(`${base_url}/movie/${props.movie.id}/similar?api_key=${API_KEY}`)
-         .then((r) => (
-             setSimilarMovies(r.data.results.slice(0, 3))
-         )).catch((error) => {
-             console.log(error);
-         });  
-     }, []);
-
-     console.log(categories);
-     console.log(actors);
-     console.log(similarMovies);
-
-    /* QUERY FOR ALL */
-
-    // const requestGenres = axios.get(`${base_url}/movie/${props.movie.id}?api_key=${API_KEY}`);
-    // const requestCredits = axios.get(`${base_url}/movie/${props.movie.id}/credits?api_key=${API_KEY}`);
-    // const requestSimilarMovies = axios.get(`${base_url}/movie/${props.movie.id}/similar?api_key=${API_KEY}`);
-
-    // useEffect(() => {  
-    //     axios.all([requestGenres, requestCredits, requestSimilarMovies])
-    //     .then((genres, credits, similarMovies) => {
-    //         setMovieData(genres, credits, similarMovies);
-    //     }).catch((error) => {
-    //         console.log(error);
-    //     });  
-    // }, []);
+        axios.get(`${base_url}/movie/${movieID}/similar?api_key=${API_KEY}&language=en-US&page=1`)
+        .then((r) => {
+            // console.log(r.data.results.slice(0, 3));    
+            setSimilarMovies(r.data.results.slice(0, 3));
+        }).catch((error) => {
+            console.log(error);
+        });  
+    }, [base_url, movieID]);
     
-    /* FORM FORMIK VALUES VALIDATION AND SUBMIT */
+    const history = useHistory();
+    const imgUrl = "http://image.tmdb.org/t/p/w342";
 
-    const addMoviesFormik = useFormik({
-        initialValues: {
-          title: props.movie.title,
-          releaseDate: props.movie.release_date,
-          description: props.movie.overview,
-          genres: [],
-          actorName: [],
-          actorCharacter: [],
-          similarMovieTitle: [],
-          similarMovieReleaseDate: []
-        },
-
-        onSubmit: values => {
-          console.log(values);
-        },
-
-        validate: values => {
-          const errors = {};
-          if (!values.title) {
-            errors.title = "Required";
-          }
-    
-          if (!values.releaseDate) {
-            errors.releaseDate = "Required";
-          }
-    
-          if (!values.description) {
-            errors.description = "Required";
-          } 
-
-          if (!values.genres) {
-            errors.genres = "Required";
-          }
-    
-          if (!values.actorName) {
-            errors.actorName = "Required";
-          }
-    
-          if (!values.actorCharacter) {
-            errors.actorCharacter = "Required";
-          }
-
-          if (!values.similarMovieTitle) {
-            errors.similarMovieTitle = "Required";
-          }
-    
-          if (!values.similarMovieReleaseDate) {
-            errors.similarMovieReleaseDate = "Required";
-          }
-          return errors;
-        }
+    const actorsData = actors.map(item => {
+        return ({
+                name: item.name,
+                photo: imgUrl + item.profile_path,
+                character: item.character
+            }
+        )
     });
+    const similarMoviesData = similarMovies.map(item => {
+        return ({
+                title: item.title,
+                poster: imgUrl + item.poster_path,
+                release_date: item.release_date
+            }
+        )
+    });
+    
+    // console.log(similarMoviesData);
 
+    /* FORM */
+
+    const formData = {
+        title: movies.title,
+        release_date: movies.release_date,
+        categories: movies.categories.map(c => c.name),
+        description: movies.description,
+        poster: movies.poster,
+        backdrop: movies.backdrop,
+        actors: actorsData,
+        similar_movies: similarMoviesData,
+        id: movies.id
+    };
+
+    const LOCAL_URL = "http://localhost:3000/movies";
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+        console.log(formData);
+        axios.post(LOCAL_URL, formData,
+        {
+           headers: {
+            'Content-Type': 'application/json',
+           } 
+        })
+        .then(response => {console.log(response)})
+        .catch((error) => console.log(error) );
+        history.push('/');
+        // setRedirectTo('/movies');
+    };
+    
 	return (
-        <div className="form-wrapper">
-            <form onSubmit={addMoviesFormik.handleSubmit}>
+        <div className={!props.showForm ? "form-wrapper" : "form-wrapper--active"}>
+            <form onSubmit={handleSubmit}>
+                {/* MOVIE */}
                 <div className="form-top-wrapper">
+                    {/* movie title */}
                     <div className="title-input-wrapper">
                     <h4>Title</h4>
-                    <div className="title-input">
-                    <input
-                    className="form-control"
-                    type="text"
-                    id="title"
-                    name="title"
-                    onChange={addMoviesFormik.handleChange}
-                    placeholder=""
-                    value={addMoviesFormik.values.title}
-                    />
-                    {/* error message */}
-                    {addMoviesFormik.errors.title ? (
-                        <div>{addMoviesFormik.errors.title}</div>
-                    ) : null}
-                    {/* error message */}
+                        <div className="title-input">
+                            <input
+                            className=""
+                            type="text"
+                            id="title"
+                            name="title"
+                            value={formData.title}
+                            placeholder=""
+                            required
+                            />
+                        </div>
                     </div>
-                    </div>
+                    {/* movie release date */}
                     <div className="release-date-input-wrapper">
-                    <h4>Release Date</h4>
-                    <div className="release-date-input">
-                    <input
-                    className="form-control"
-                    type="text"
-                    id="release-date"
-                    name="releaseDate"
-                    onChange={addMoviesFormik.handleChange}
-                    placeholder=""
-                    value={addMoviesFormik.values.releaseDate}
-                    />
-                    {/* error message */}
-                    {addMoviesFormik.errors.releaseDate ? (
-                        <div>{addMoviesFormik.errors.releaseDate}</div>
-                    ) : null}
-                    {/* error message */}
-                    </div>
+                        <h4>Release Date</h4>
+                        <div className="release-date-input">
+                            <input
+                            className=""
+                            type="text"
+                            id="release-date"
+                            name="release_date"
+                            value={formData.release_date}
+                            placeholder=""
+                            />
+                        </div>
                     </div>
                 </div>
                 <div className="form-description-wrapper">
+                    {/* movie description */}
                     <div className="description-input-wrapper">
                     <h4>Synopsis</h4>
                     <textarea
-                    className="form-control"
+                    className=""
                     rows="3"
                     cols="90"
                     id="description"
                     name="description"
-                    onChange={addMoviesFormik.handleChange}
+                    value={formData.description}
                     placeholder=""
-                    value={addMoviesFormik.values.description}
+                    readOnly
                     />
-                    {/* error message */}
-                    {addMoviesFormik.errors.description ? (
-                        <div>{addMoviesFormik.errors.description}</div>
-                    ) : null}
-                    {/* error message */}
                     </div>
                 </div>
                 <div className="form-bottom-wrapper"> 
-                    <div className="form-genres">
+                    {/* movie categories */}
+                    <div className="form-categories">
                         <h4>Categories</h4>
                         <ul className="categories-list">
-                            {categories.map(category => (
-                           <li key={category.id}>
-                                <label htmlFor="genres">Name</label>
+                           <li key="">
+                                <label htmlFor="categories">Name</label>
                                 <input
-                                className="form-control"
+                                className=""
                                 type="text"
-                                id="genres"
-                                name="genres"
-                                onChange={addMoviesFormik.handleChange}
-                                placeholder={category.name}
-                                value={addMoviesFormik.genres}
+                                id="categories"
+                                name="categories"
+                                value={formData.categories}
+                                placeholder=""
                                 />
-                                {/* error message */}
-                                {addMoviesFormik.errors.genres ? (
-                                    <div>{addMoviesFormik.errors.genres}</div>
-                                ) : null}
-                                {/* error message */} 
                             </li>
-                           ))}
                         </ul>   
                     </div>
-
+                    {/* ACTORS */}
                     <div className="form-actors">
                         <h4>Actors</h4>
                         <ul className="actors-list">
-                            {actors.map(actor => (
-                            <li key={actor.cast_id}>
+                        {actors.map(a => (
+                            <li key={a.id}>
+                                {/* actors name */}
                                 <label htmlFor="actorName">Name</label>
                                 <input
-                                className="form-control"
+                                className=""
                                 type="text"
-                                id="actor_name"
-                                name="actorName"
-                                onChange={addMoviesFormik.handleChange}
-                                placeholder={actor.name}
-                                value={addMoviesFormik.actorName}
+                                id="actor-name"
+                                name="actors"
+                                value={a.name}
+                                placeholder=""
                                 />
-                                {/* error message */}
-                                {addMoviesFormik.errors.actorName ? (
-                                    <div>{addMoviesFormik.errors.actorName}</div>
-                                ) : null}
-                                {/* error message */}
+                                {/* actors character */}
                                 <label htmlFor="actorCharacter">Characters</label>
                                 <input
-                                className="form-control"
+                                className=""
                                 type="text"
-                                id="actor.character"
-                                name="actorCharacter"
-                                onChange={addMoviesFormik.handleChange}
-                                placeholder={actor.character}
-                                value={addMoviesFormik.actorCharacter}
+                                id="actor-character"
+                                name="actors"
+                                value={a.character}
+                                placeholder=""
                                 />
-                                {/* error message */}
-                                {addMoviesFormik.errors.actorCharacter ? (
-                                    <div>{addMoviesFormik.errors.actorCharacter}</div>
-                                ) : null}
-                                {/* error message */}
                             </li>
                             ))}
                         </ul>
                     </div>
+                    {/* SIMILAR MOVIES */}
                     <div className="form-similar-movies">
                         <h4>Similar Movies</h4>
                         <ul className="similar-movies-list">
-                            {similarMovies.map(similar => (
-                            <li key={similar.id}>
+                        {similarMovies.map(sm => (
+                            <li key={sm.id}>
+                                {/* similar movies title */}
                                 <label htmlFor="similarMovieTitle">Title</label>
                                 <input
-                                className="form-control"
+                                className=""
                                 type="text"
-                                id="similar_movie_title"
-                                name="similarMovieTitle"
-                                onChange={addMoviesFormik.handleChange}
-                                placeholder={similar.title}
-                                value={addMoviesFormik.similarMovieTitle}
+                                id="similar-movie-title"
+                                name="similar_movies"
+                                value={sm.title}
+                                placeholder=""
                                 />
-                                {/* error message */}
-                                {addMoviesFormik.errors.similarMovieTitle ? (
-                                    <div>{addMoviesFormik.errors.similarMovieTitle}</div>
-                                ) : null}
-                                {/* error message */}
-                                {/* <label htmlFor="similarMovieReleaseDate">Release Date</label>
+                                {/* similar movies release_date */}
+                                <label htmlFor="similarMovieReleaseDate">Release Date</label>
                                 <input
-                                className="form-control"
+                                className=""
                                 type="text"
-                                id="similar_movie_release_date"
-                                name="similarMovieReleaseDate"
-                                onChange={addMoviesFormik.handleChange}
-                                placeholder={similar.release_date}
-                                value={addMoviesFormik.similarMovieReleaseDate}
-                                /> */}
-                                {/* error message */}
-                                {/* {addMoviesFormik.errors.similarMovieReleaseDate ? (
-                                    <div>{addMoviesFormik.errors.similarMovieReleaseDate}</div>
-                                ) : null} */}
-                                {/* error message */}
+                                id="similar-movie-release-date"
+                                name="similar_movies"
+                                value={sm.release_date}
+                                placeholder=""
+                                />
                            </li>
-                            ))}
+                           ))}
                         </ul>
                     </div>
                 </div>
@@ -296,6 +245,6 @@ const AddMovieForm = (props) => {
             </form>
         </div>
 	);
-}
+};
 
 export default AddMovieForm;

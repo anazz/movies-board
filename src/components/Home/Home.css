@@ -1,12 +1,16 @@
 .home-section {
     width: 100%;
-    height: 100vh;
+    height: 150vh;
     /* background-image: url("./movie-posters.jpeg"); */
 }
 
 h1 {
     margin: 6rem 8rem;
-    color: #FE654F;
+    /* color: #FE654F; */
+    background: -webkit-linear-gradient(#A89787, #EC7D10);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 10rem;
     text-align: center;
 }
@@ -23,5 +27,6 @@ a {
 }
 
 .movies-link:hover,  .movies-link:active{
-    color: #FE654F;
+    /* color: #FE654F; */
+    color: #EC7D10;
 }

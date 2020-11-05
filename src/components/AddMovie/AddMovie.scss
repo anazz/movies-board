@@ -1,0 +1,179 @@
+@import './src/style/styles.scss';
+
+.add-movie-wrapper {
+    width: 100%;
+    // height: 100vh;
+
+    .top-wrapper {
+        position: relative;
+        min-width: 100%;
+
+        h1 {
+            margin: 6rem 8rem;
+            /* color: #FE654F; */
+            background: -webkit-linear-gradient(#A89787, #EC7D10);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 10rem;
+            text-align: center;
+        }
+
+         /* PAGE TOP BACKGROUND */
+
+        .poster {
+            width: 100vw;
+            height: 40vw;
+            display: block;
+        }
+        
+          .bg-layer {
+            position: absolute;
+            top: 0px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(1, 23, 30, 0.82)
+          }
+        
+        .page-title {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            /* font-size: 100px; */
+        }
+
+        .search-wrapper {
+            position: absolute;
+            top: 23rem;
+            left: 24rem;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            padding: 3rem 2rem;
+            
+    
+            .search-form-wrapper {
+                display: flex;
+            }
+        }  
+    }
+
+    // .form-wrapper {
+    //     display: none;
+    // }
+
+    .list-form-wrapper {
+        .add-form-results{
+            .movie-list {
+                .movie-results-list {
+                    padding: 0;
+                    text-decoration: unset;
+    
+                    a.list-link {
+                        color: #FEF4DD;
+                        text-decoration: unset;
+    
+                        &:hover {
+                            text-decoration: unset;
+                        }
+                    } 
+                    
+                    h3 {
+                        color: #FE654F;
+                    }
+    
+                    .release_date {
+                        color: #FEF4DD;
+                    }
+                }
+            }
+
+            .form-wrapper {
+                display: none;
+    
+                &.--active {
+                    display: flex;
+                    width: 120%;
+                    height: auto;
+                    padding: 2rem 0;
+                    background-color: #01161C;
+                    
+                    form {
+                        .form-top-wrapper {
+                            display: flex;
+                            margin-top: 2rem;
+            
+                            .release-date-input-wrapper {
+                                margin: 0 1rem;
+                            }
+                        }
+    
+                        h4 {
+                            color: #A89787;
+                            font-weight: 200;
+                            font-style: normal;
+                            letter-spacing: 1px;
+                        }
+            
+                        label { 
+                            padding: 0 1rem;
+                            color: #A89787;
+                        }
+
+                        li {
+                            list-style: none;
+                            color: #A89787;
+                        }
+
+                        input {
+                            color: #A89787;
+                        }
+        
+                        // #title, #release-date, #description, #categories {
+                        //     color: #0D3B66;
+                        //     color: #A89787;
+                        // }
+            
+                        .form-description-wrapper {
+                            display: flex;
+                            margin-top: 2rem;
+                        }
+            
+                        .form-bottom-wrapper {
+                            display: flex;
+                            margin: 2rem 0;
+            
+                            .form-categories {
+                                display: flex;
+                                flex-direction: column;
+                                padding-right: 2rem;
+                            }
+            
+                            .form-actors {
+                                display: flex;
+                                flex-direction: column;
+                                padding-right: 2rem;
+                            }
+            
+                            .form-similar-movies {
+                                display: flex;
+                                flex-direction: column;
+                                padding-right: 2rem;
+                            }
+            
+                            .categories-list, .similar-movies-list {
+                                flex-direction: column;
+                            }
+                        }
+            
+                        span {
+                            padding-bottom: 1rem;
+                        }
+                    }   
+                }
+            }
+        }
+    }
+}

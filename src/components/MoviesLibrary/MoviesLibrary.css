@@ -1,3 +1,36 @@
+/* .MoviesLibrary {
+    width: auto;
+} */
+
+/* .movies-library-top {
+    position: relative;
+    min-width: 100%;
+} */
+
+/* .poster {
+    width: 100vw;
+    height: 50vw;
+    display: block;
+} */
+
+/* PAGE BACKGROUND */
+
+  /* .bg-layer {
+    position: absolute;
+    top: -12px;
+    left: 0;
+    width: 100%;
+    height: 105%;
+    background-color: rgba(1, 23, 30, 0.82)
+  } */
+
+  /* .page-title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+  } */
+
 h2 {
     margin: 0;
     padding: 5rem;
@@ -5,27 +38,26 @@ h2 {
     text-align: center;
 }
 
-.wrapper {
+/* .wrapper {
     width: 100%;
     height: 100vh;
     background-color: white;
-}
+} */
 
-.library-movie-poster {
+/* .library-movie-poster {
     width: 20vw;
     padding: 3.5rem 3rem;
-    /* background-color: rgba(250, 240, 202, 0.8); */
     border: 0.3px solid #A89787;
-}
+} */
 
-.library-movie-title {
+/* .library-movie-title {
     font-size: 1.5rem;
-}
+} */
 
-.movies-library-list {
+/* .movies-library-list {
     width: 120%;
     height: 100%;
     padding-top: 2rem;
     background-color: #01161C;
-}
+} */
 

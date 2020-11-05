@@ -1,28 +1,55 @@
 /* .wrapper-add-movie {
     background-color: rgba(1, 23, 30, 0.81);
 } */
+/* .top-wrapper {
+    position: relative;
+    min-width: 100%;
+} */
 
-.search-wrapper {
+/* .poster {
+    width: 100vw;
+    height: 50vw!important;
+    display: block;
+} */
+
+/* PAGE BACKGROUND */
+
+  /* .bg-layer {
+    position: absolute;
+    top: -12px;
+    left: 0;
+    width: 100%;
+    height: 105%;
+    background-color: rgba(1, 23, 30, 0.68);
+  } */
+
+  /* .page-title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+  } */
+
+/* .search-wrapper {
     display: flex;
     justify-content: center;
     padding: 3rem 2rem;
-}
+} */
 
-.search-form-wrapper {
+/* .search-form-wrapper {
     display: flex;
-}
+} */
 
-#title, #release-date, #description, #genres {
-    /* color: #0D3B66; */
+/* #title, #release-date, #description, #genres {
     color: #A89787;
-}
+} */
 
-.form-wrapper {
+/* .form-wrapper {
     width: 120%;
     height: auto;
     padding: 2rem 0;
     background-color: #01161C;
-}
+} */
 
 .results-wrapper {
     margin: 2rem;
@@ -34,79 +61,79 @@
     list-style: none;
 }
 
-.movie-results-list {
+/* .movie-results-list {
     padding: 0;
-}
+} */
 
-.categories-list, .similar-movies-list {
+/* .categories-list, .similar-movies-list {
     flex-direction: column;
-}
+} */
 
 .release_date {
     color: darkorchid;
 }
 
-.form-wrapper {
+/* .form-wrapper {
     padding: 2rem;
-    /* border: 1px solid rgb(202, 209, 138); */
-}
-.form-top-wrapper {
+} */
+
+/* .form-top-wrapper {
     display: flex;
     margin-top: 2rem;
-}
+} */
 
-.form-description-wrapper {
+/* .form-description-wrapper {
     display: flex;
     margin-top: 2rem;
-}
+} */
 
-.form-bottom-wrapper {
+/* .form-bottom-wrapper {
     display: flex;
     margin: 2rem 0;
-}
+} */
 
 /* .title-input-wrapper, .release-date-input-wrapper, .description-input-wrapper {
     display: flex;
     flex-direction: column;
 } */
 
-h4 {
+/* h4 {
     color: #A89787;
     font-weight: 200;
     font-style: normal;
     letter-spacing: 1px;
-}
+} */
 
-label { 
+/* label { 
     padding: 0 1rem;
-}
+} */
 
 .categories {
     padding-bottom: 1rem;
 }
 
-span {
+/* span {
     padding-bottom: 1rem;
-}
+} */
 
-.form-genres {
+/* .form-genres {
     display: flex;
     flex-direction: column;
     padding-right: 2rem;
-}
+} */
 
-.form-actors {
+/* .form-actors {
     display: flex;
     flex-direction: column;
     padding-right: 2rem;
-}
+} */
 
-.form-similar-movies {
+/* .form-similar-movies {
     display: flex;
     flex-direction: column;
     padding-right: 2rem;
-}
+} */
 
-.release-date-input-wrapper {
+/* .release-date-input-wrapper {
     margin: 0 1rem;
-}
+} */

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useFormik } from "formik";
 import './ChangeMovieInfo.css';
 
@@ -60,8 +60,12 @@ const ChangeMovieInfo = (props) => {
     });
 
     return (
-        <div>
-        <h1>Modifier les informations d'un film</h1>
+        <div className="wrapper">
+            <div className="top-wrapper">
+                <h1 className="page-title">Modifier les informations d'un film</h1>
+                <img className="poster" src="./camera-background.jpg" alt="movie poster" />
+                <div className="bg-layer"></div>
+            </div>
         <div className="update-form-wrapper">
             <form onSubmit={changeMovieInfoFormik.handleSubmit}>
                 <div className="update-form-top-wrapper">

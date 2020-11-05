@@ -1,13 +1,48 @@
-.container{
-    width: 100%;
-    margin-right: 0;
-    margin-left: 0;
-    padding-right: 0;
-    padding-left: 0;
+.movie-page-top {
+    position: relative;
+    min-width: 100%;
+}   
+
+h1 {
+    margin: 0 8rem;
+    /* color: #FE654F; */
+    background: -webkit-linear-gradient(#A89787, #EC7D10);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 10rem;
+    text-align: center;
 }
+         /* PAGE TOP BACKGROUND */
+/* 
+        .poster {
+            width: 100vw;
+            height: 50vw;
+            display: block;
+        }
+        
+        .bg-layer {
+            position: absolute;
+            top: -12px;
+            left: 0;
+            width: 100%;
+            height: 105%;
+            background-color: rgba(1, 23, 30, 0.82)
+        } */
+        
+        /* .page-title {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        } */
 
 h3 {
     color: #FE654F;
+    font-weight: 200;
+    font-size: 40px;
+    font-style: normal;
+    letter-spacing: 1px;
 }
 
 .movie-release-date {
@@ -19,7 +54,6 @@ h3 {
     z-index: -1;
     background-repeat: no-repeat;
     background-size: 50rem 80rem;
-    /* opacity: 0.3; */
     width: 110vw;
     height: 76.5vw;
 }
@@ -29,15 +63,11 @@ h3 {
     z-index: -1;
     background-repeat: no-repeat;
     background-size: 50rem 80rem;
-    /* opacity: 0.3; */
     width: 110vw;
     height: 76.5vw;
 }
 
 .bg-layer-movie {
-    /* background-color: rgba(248, 247, 216, 0.7); */
-    /* background-color: rgba(250, 240, 202, 0.8); */
-    /* background-color: rgba(255,250,250, 0.9); */
     position: absolute;
     top: 0;
     left: 0;
@@ -49,7 +79,7 @@ h3 {
 .main-poster {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 5rem;
     width: 25vw;
     padding: 3.5rem 3rem;
     background-color: #01161C;
@@ -80,23 +110,22 @@ h3 {
 }
 
 .movie-info {
-    margin: 2rem;
+    margin: 3rem;
 }
 
-.movie-title {
-    /* color: #A89787; */
-    /* color: #FEF4DD; */
+/* .movie-title {
     font-weight: 200;
     font-size: 40px;
     font-style: normal;
     letter-spacing: 1px;
-}
+} */
 
 .cast-title {
     margin-left: 3rem;
 }
 
-.actor-name {
+.actor-name { 
+    padding-right: 1rem;
     color: #A89787;
     font-weight: 200;
     font-style: normal;
@@ -108,29 +137,30 @@ h3 {
     margin-top: 6rem;
 }
 
-ul {
+ul { 
     display: flex;
-    padding-inline-start: 50px;
+    margin-left: 0.5rem;
     list-style: none;
 }
 
-li {
-    padding-right: 1rem
+li { 
+    padding-right: 1rem;
 }
 
-.buttons {
-    margin: 0 3rem;
+.buttons { 
+    display: flex;
+    margin: 0 3rem;   
 }
 
 .similar-movie-poster {
     width: 9vw;
 }
 
-.movie-page-title {
+/* .movie-page-title { 
     margin: 0 8rem;
-}
+} */
 
-.slash {
+.slash { 
     padding-right: 0.5rem;
 }
 
